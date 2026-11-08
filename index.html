@@ -1,136 +1,321 @@
-index.html
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>БИОЕГЭ с Любовью — биология ОГЭ и ЕГЭ</title>
-  <style>
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #fffdf7;
-      color: #263b2e;
-      line-height: 1.6;
-    }
-    header {
-      background: #214d38;
-      color: white;
-      padding: 22px 8%;
-      text-align: center;
-    }
-    header h1 { margin: 0; font-size: 30px; }
-    header p { margin: 6px 0 0; color: #ead9a6; }
-    nav {
-      background: #f2ead5;
-      padding: 13px;
-      text-align: center;
-    }
-    nav a {
-      color: #214d38;
-      text-decoration: none;
-      margin: 0 12px;
-      font-weight: bold;
-    }
-    .hero {
-      padding: 65px 20px;
-      text-align: center;
-      background: #f8f5e9;
-    }
-    .hero h2 { font-size: 34px; color: #214d38; }
-    .hero p { max-width: 680px; margin: 15px auto; }
-    .button {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 13px 25px;
-      background: #b99a4b;
-      color: white;
-      text-decoration: none;
-      border-radius: 7px;
-      font-weight: bold;
-    }
-    section { padding: 42px 8%; }
-    h2 { color: #214d38; }
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 18px;
-    }
-    .card {
-      background: white;
-      border: 1px solid #e6dec9;
-      border-radius: 12px;
-      padding: 22px;
-    }
-    .card h3 { color: #94752f; }
-    footer {
-      background: #214d38;
-      color: white;
-      text-align: center;
-      padding: 25px;
-    }
-    footer a { color: #ead9a6; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>БИОЕГЭ с Любовью — репетитор по биологии</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #fffdf8;
+  color: #294333;
+  line-height: 1.65;
+}
+
+header {
+  background: white;
+  padding: 14px 7%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  border-bottom: 1px solid #eee7d5;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.brand img {
+  width: 85px;
+  height: 85px;
+  object-fit: contain;
+}
+
+.brand h1 {
+  font-family: Georgia, serif;
+  color: #17602f;
+  font-size: 25px;
+}
+
+.brand p {
+  color: #a5873d;
+  font-size: 14px;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+nav a {
+  color: #31543c;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+  padding: 65px 8%;
+  background: #f5f3e9;
+}
+
+.hero-text {
+  max-width: 570px;
+}
+
+.hero h2 {
+  font-family: Georgia, serif;
+  font-size: 39px;
+  line-height: 1.2;
+  color: #205535;
+  margin-bottom: 22px;
+}
+
+.hero p {
+  font-size: 18px;
+  margin-bottom: 18px;
+}
+
+.hero img {
+  width: 340px;
+  max-width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px #00000018;
+}
+
+.button {
+  display: inline-block;
+  background: #23613b;
+  color: white;
+  padding: 13px 25px;
+  border-radius: 7px;
+  text-decoration: none;
+  margin-top: 12px;
+  font-weight: bold;
+}
+
+.button:hover {
+  background: #17452a;
+}
+
+section {
+  padding: 55px 8%;
+}
+
+section h2 {
+  font-family: Georgia, serif;
+  font-size: 30px;
+  color: #205535;
+  margin-bottom: 25px;
+}
+
+.about {
+  max-width: 950px;
+  margin: auto;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 22px;
+}
+
+.card {
+  background: white;
+  padding: 25px;
+  border: 1px solid #e8dfc9;
+  border-radius: 12px;
+}
+
+.card h3 {
+  color: #987b36;
+  margin-bottom: 12px;
+}
+
+.materials {
+  background: #f5f3e9;
+}
+
+footer {
+  background: #214d38;
+  color: white;
+  text-align: center;
+  padding: 30px 15px;
+}
+
+footer a {
+  color: #f0d99b;
+}
+
+@media (max-width: 750px) {
+  header {
+    justify-content: center;
+    gap: 15px;
+  }
+
+  nav {
+    justify-content: center;
+  }
+
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    padding: 40px 6%;
+  }
+
+  .hero h2 {
+    font-size: 30px;
+  }
+
+  .hero img {
+    width: 290px;
+  }
+
+  section {
+    padding: 40px 6%;
+  }
+}
+</style>
 </head>
+
 <body>
 
 <header>
-  <h1>БИОЕГЭ с Любовью</h1>
-  <p>Биология • ОГЭ • ЕГЭ</p>
+  <div class="brand">
+    <img src="logo.png" alt="Логотип БИОЕГЭ с Любовью">
+    <div>
+      <h1>БИОЕГЭ с Любовью</h1>
+      <p>Биология • ОГЭ • ЕГЭ</p>
+    </div>
+  </div>
+
+  <nav>
+    <a href="#about">Обо мне</a>
+    <a href="#lessons">Занятия</a>
+    <a href="#materials">Материалы</a>
+    <a href="#contacts">Контакты</a>
+  </nav>
 </header>
 
-<nav>
-  <a href="#about">Обо мне</a>
-  <a href="#lessons">Занятия</a>
-  <a href="#materials">Материалы</a>
-  <a href="#contacts">Контакты</a>
-</nav>
-
 <div class="hero">
-  <h2>Биология становится понятной!</h2>
-  <p>Подготовка к ОГЭ и ЕГЭ по биологии. Разбираемся в сложных темах, учимся понимать процессы и уверенно решать задания.</p>
-  <a class="button" href="#contacts">Записаться на занятие</a>
+  <div class="hero-text">
+    <h2>Биология становится понятной!</h2>
+    <p>
+      Подготовка к ОГЭ и ЕГЭ по биологии.
+      Учимся понимать закономерности живой природы,
+      разбираться в сложных процессах и уверенно
+      решать экзаменационные задания.
+    </p>
+    <p>
+      <strong>Не просто учим — понимаем биологию!</strong>
+    </p>
+    <a class="button" href="https://t.me/bioege_love">
+      Связаться со мной
+    </a>
+  </div>
+
+  <img src="portrait.png" alt="Репетитор по биологии">
 </div>
 
 <section id="about">
-  <h2>Обо мне</h2>
-  <p>Я — репетитор по биологии. Помогаю ученикам 8–11 классов разобраться в биологии, систематизировать знания и подготовиться к экзаменам.</p>
-  <p>В основе занятий — понимание, наглядные схемы, авторские материалы и регулярная практика.</p>
+  <div class="about">
+    <h2>Обо мне</h2>
+    <p>
+      Я — репетитор по биологии и автор проекта
+      «БИОЕГЭ с Любовью».
+    </p>
+    <p>
+      Помогаю ученикам 8–11 классов подготовиться
+      к ОГЭ и ЕГЭ, разобраться в сложных темах
+      и научиться применять знания на практике.
+    </p>
+    <p>
+      В работе использую наглядные схемы,
+      таблицы, авторские рабочие листы,
+      практические задания и интерактивные модели.
+    </p>
+    <p>
+      Верю в каждого ученика и помогаю увидеть,
+      что биология может быть интересной и понятной!
+    </p>
+  </div>
 </section>
 
 <section id="lessons">
   <h2>Направления подготовки</h2>
+
   <div class="cards">
     <div class="card">
       <h3>Подготовка к ОГЭ</h3>
-      <p>Теория, практические задания и разбор сложных тем.</p>
+      <p>
+        Систематизация школьных знаний,
+        разбор тем и регулярная практика
+        экзаменационных заданий.
+      </p>
     </div>
+
     <div class="card">
       <h3>Подготовка к ЕГЭ</h3>
-      <p>Углублённая биология, задания первой и второй частей экзамена.</p>
+      <p>
+        Углублённая биология, работа
+        с заданиями первой и второй частей,
+        анализ сложных процессов.
+      </p>
     </div>
+
     <div class="card">
-      <h3>Авторские материалы</h3>
-      <p>Рабочие листы, схемы, практикумы и интерактивные лаборатории.</p>
+      <h3>Индивидуальный подход</h3>
+      <p>
+        Подбор темпа и содержания занятий
+        с учётом уровня подготовки
+        и целей ученика.
+      </p>
     </div>
   </div>
 </section>
 
-<section id="materials">
-  <h2>Биологическая лаборатория</h2>
-  <p>Здесь будут размещаться интерактивные модели и авторские учебные материалы, которые помогут изучать биологические процессы наглядно.</p>
+<section id="materials" class="materials">
+  <h2>Авторские материалы</h2>
+  <p>
+    Рабочие листы, биологические схемы,
+    практикумы и интерактивные лаборатории
+    для изучения биологии.
+  </p>
+  <p>
+    Здесь будет постепенно формироваться
+    наша авторская образовательная библиотека.
+  </p>
 </section>
 
 <section id="contacts">
   <h2>Контакты и запись</h2>
-  <p>Чтобы узнать подробности о занятиях, свяжитесь со мной:</p>
-  <p><a href="https://t.me/bioege_love">Telegram «БИОЕГЭ с Любовью»</a></p>
+  <p>
+    По вопросам занятий и сотрудничества
+    напишите мне в Telegram.
+  </p>
+  <a class="button" href="https://t.me/bioege_love">
+    Написать в Telegram
+  </a>
 </section>
 
 <footer>
   <p>© БИОЕГЭ с Любовью</p>
-  <p>Биология с пониманием и интересом</p>
+  <p>Биология с пониманием и интересом 🌿</p>
 </footer>
 
 </body>
