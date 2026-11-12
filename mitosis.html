@@ -1,1 +1,134 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Интерактивная лаборатория митоза — БИОЕГЭ с Любовью</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background: #fffdf8;
+  color: #294333;
+  text-align: center;
+}
+
+header {
+  max-width: 1000px;
+  margin: 20px auto 30px;
+}
+
+h1 {
+  color: #205535;
+  font-family: Georgia, serif;
+  font-size: 32px;
+  margin-bottom: 12px;
+}
+
+.subtitle {
+  color: #68766a;
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+.lab {
+  width: 100%;
+  max-width: 1100px;
+  margin: 25px auto;
+  padding: 15px;
+  background: #ffffff;
+  border: 1px solid #e5eadf;
+  border-radius: 16px;
+  box-shadow: 0 5px 20px rgba(41, 67, 51, 0.07);
+  overflow-x: auto;
+}
+
+canvas {
+  display: block;
+  margin: 0 auto;
+  max-width: none;
+}
+
+.back-link {
+  display: inline-block;
+  margin: 25px auto;
+  padding: 12px 22px;
+  color: #ffffff;
+  background: #28613d;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+
+.back-link:hover {
+  background: #19482c;
+}
+
+footer {
+  margin-top: 35px;
+  padding: 20px;
+  color: #7b897d;
+  font-size: 13px;
+}
+
+@media (max-width: 600px) {
+  body {
+    padding: 12px;
+  }
+
+  h1 {
+    font-size: 25px;
+  }
+
+  .subtitle {
+    font-size: 15px;
+  }
+
+  .lab {
+    padding: 8px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>Интерактивная лаборатория митоза</h1>
+
+  <p class="subtitle">
+    Изучи стадии клеточного деления:
+    от подготовки клетки к делению
+    до образования двух дочерних клеток.
+  </p>
+</header>
+
+<main>
+
+  <div class="lab" id="laboratory"></div>
+
+  <a class="back-link" href="index.html">
+    ← Вернуться на сайт БИОЕГЭ с Любовью
+  </a>
+
+</main>
+
+<footer>
+  <p>БИОЕГЭ с Любовью</p>
+  <p>Интерактивные модели и авторские материалы по биологии</p>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+<script src="mitosis.js"></script>
+
+</body>
+</html>
 
