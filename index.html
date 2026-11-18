@@ -693,5 +693,94 @@ footer a {
 </footer>
 
 </body>
+<style>
+.cell-promo {
+  max-width: 950px;
+  margin: 45px auto;
+  padding: 28px;
+  border: 1px solid #dce9dc;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #ffffff, #f1f7ef);
+  box-shadow: 0 8px 25px rgba(39, 83, 48, 0.08);
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+}
+
+.cell-promo-icon {
+  font-size: 65px;
+  min-width: 85px;
+  text-align: center;
+}
+
+.cell-promo-content {
+  flex: 1;
+  min-width: 220px;
+}
+
+.cell-promo h2 {
+  color: #245b38;
+  margin: 0 0 12px;
+  font-size: 25px;
+}
+
+.cell-promo p {
+  color: #526457;
+  line-height: 1.6;
+  margin: 0 0 18px;
+}
+
+.cell-promo a {
+  display: inline-block;
+  background: #287344;
+  color: white;
+  text-decoration: none;
+  padding: 12px 25px;
+  border-radius: 10px;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+.cell-promo a:hover {
+  background: #1d542f;
+  transform: translateY(-2px);
+}
+
+.cell-promo-label {
+  color: #a17b2c;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+@media (max-width: 600px) {
+  .cell-promo {
+    margin: 25px 12px;
+    padding: 22px;
+  }
+}
+</style>
+
+<section class="cell-promo">
+  <div class="cell-promo-icon">🔬</div>
+
+  <div class="cell-promo-content">
+    <div class="cell-promo-label">ИНТЕРАКТИВНАЯ БИОЛОГИЯ</div>
+
+    <h2>Интерактивная модель клетки</h2>
+
+    <p>
+      Изучай строение животной и растительной клетки.
+      Выбирай органоиды, знакомься с их особенностями
+      и проверяй свои знания!
+    </p>
+
+    <a href="./cell.html">Открыть симуляцию →</a>
+  </div>
+</section>
+
 </html>
 
