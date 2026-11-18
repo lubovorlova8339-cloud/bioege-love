@@ -1,1 +1,1524 @@
 
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#f5f8f3">
+<title>Интерактивная лаборатория клетки | БИОЕГЭ с Любовью</title>
+
+<style>
+:root {
+  --green: #285d43;
+  --green2: #43815d;
+  --light: #edf4eb;
+  --gold: #c49a48;
+  --ink: #24382e;
+  --muted: #718078;
+  --white: #ffffff;
+  --line: #e2eae2;
+  --shadow: 0 12px 35px rgba(39,77,54,.09);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: #f5f8f3;
+  color: var(--ink);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+button { font: inherit; }
+
+header {
+  padding: 22px 5%;
+  background: white;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.brand {
+  color: var(--green);
+  font-size: 19px;
+  font-weight: 800;
+  letter-spacing: .3px;
+}
+
+.brand span {
+  display: block;
+  margin-top: 5px;
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--muted);
+}
+
+.header-tag {
+  color: var(--green);
+  background: var(--light);
+  padding: 9px 15px;
+  border-radius: 20px;
+  font-size: 12px;
+}
+
+main {
+  width: min(1450px, 94%);
+  margin: 30px auto 60px;
+}
+
+.intro {
+  margin-bottom: 25px;
+}
+
+.intro h1 {
+  font-size: clamp(26px, 4vw, 39px);
+  margin: 0 0 10px;
+  color: var(--green);
+}
+
+.intro p {
+  color: var(--muted);
+  line-height: 1.6;
+  max-width: 760px;
+  margin: 0;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+
+.tabs {
+  display: flex;
+  gap: 9px;
+  flex-wrap: wrap;
+}
+
+.tab, .tool-button {
+  border: 1px solid var(--line);
+  background: white;
+  color: var(--green);
+  border-radius: 10px;
+  padding: 12px 18px;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.tab:hover, .tool-button:hover {
+  border-color: var(--green2);
+}
+
+.tab.active {
+  background: var(--green);
+  color: white;
+  border-color: var(--green);
+}
+
+.tools {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.tool-button {
+  font-size: 13px;
+  padding: 10px 13px;
+}
+
+.workspace {
+  display: grid;
+  grid-template-columns: minmax(0, 1.65fr) minmax(290px, .8fr);
+  gap: 20px;
+  align-items: start;
+}
+
+.visual-card, .info-card, .list-card {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+}
+
+.visual-card {
+  overflow: hidden;
+}
+
+.visual-head {
+  padding: 18px 22px;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: center;
+  border-bottom: 1px solid var(--line);
+}
+
+.visual-head h2 {
+  font-size: 17px;
+  color: var(--green);
+  margin: 0;
+}
+
+.visual-head span {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.diagram-wrap {
+  padding: 12px;
+  background:
+    radial-gradient(ellipse at center, #f7faf5 0%, #ffffff 72%);
+}
+
+#cellSvg {
+  display: block;
+  width: 100%;
+  height: auto;
+  min-height: 300px;
+  overflow: visible;
+}
+
+.organelle {
+  cursor: pointer;
+  outline: none;
+  transition: opacity .2s, filter .2s;
+}
+
+.organelle:hover {
+  filter: brightness(1.09) drop-shadow(0 0 5px #d6b86d);
+}
+
+.organelle.selected {
+  filter: drop-shadow(0 0 7px #c99e40);
+}
+
+.organelle:focus-visible {
+  filter: drop-shadow(0 0 7px #428c64);
+}
+
+.organelle.selected .focus-stroke {
+  stroke: #c38d27 !important;
+  stroke-width: 4 !important;
+}
+
+.labels-hidden .diagram-label {
+  display: none;
+}
+
+.diagram-label {
+  font-size: 13px;
+  font-weight: bold;
+  fill: #315b43;
+  paint-order: stroke;
+  stroke: white;
+  stroke-width: 4px;
+  stroke-linejoin: round;
+  pointer-events: none;
+}
+
+.svg-number {
+  fill: #285d43;
+  stroke: white;
+  stroke-width: 2;
+}
+
+.svg-number-text {
+  fill: white;
+  font-size: 11px;
+  font-weight: bold;
+  text-anchor: middle;
+  dominant-baseline: central;
+  pointer-events: none;
+}
+
+.diagram-hint {
+  padding: 12px 20px 18px;
+  font-size: 12px;
+  color: var(--muted);
+  text-align: center;
+}
+
+.info-card {
+  padding: 22px;
+  position: sticky;
+  top: 15px;
+}
+
+.info-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 15px;
+}
+
+.info-icon {
+  width: 47px;
+  height: 47px;
+  border-radius: 13px;
+  background: var(--light);
+  display: grid;
+  place-items: center;
+  font-size: 23px;
+}
+
+.info-top h2 {
+  color: var(--green);
+  font-size: 20px;
+  margin: 0;
+}
+
+.info-subtitle {
+  color: var(--muted);
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.info-description {
+  font-size: 14px;
+  line-height: 1.65;
+  color: #46594e;
+  margin: 14px 0 20px;
+}
+
+.info-section {
+  border-top: 1px solid var(--line);
+  padding: 15px 0;
+}
+
+.info-section h3 {
+  margin: 0 0 9px;
+  color: var(--green);
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+}
+
+.info-section p, .info-section li {
+  font-size: 13px;
+  line-height: 1.6;
+  color: #53635a;
+}
+
+.info-section p { margin: 0; }
+
+.info-section ul {
+  padding-left: 18px;
+  margin: 0;
+}
+
+.membrane-tag {
+  display: inline-block;
+  background: #edf4eb;
+  color: #285d43;
+  border-radius: 20px;
+  padding: 7px 11px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.empty-state {
+  color: var(--muted);
+  line-height: 1.6;
+  font-size: 14px;
+}
+
+.list-card {
+  margin-top: 20px;
+  padding: 20px;
+}
+
+.list-card h2 {
+  font-size: 17px;
+  color: var(--green);
+  margin: 0 0 15px;
+}
+
+.organelle-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+}
+
+.organelle-button {
+  border: 1px solid var(--line);
+  background: #fff;
+  border-radius: 9px;
+  color: #43574a;
+  padding: 9px 12px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.organelle-button:hover {
+  border-color: var(--green2);
+  background: var(--light);
+}
+
+.organelle-button.active {
+  background: var(--green);
+  color: white;
+  border-color: var(--green);
+}
+
+.compare-note {
+  display: none;
+  margin-top: 18px;
+  padding: 17px;
+  background: #f3f7f0;
+  border-radius: 12px;
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+.compare-note.visible { display: block; }
+
+footer {
+  padding: 25px;
+  text-align: center;
+  color: #829087;
+  font-size: 12px;
+}
+
+@media(max-width: 850px) {
+  .workspace { grid-template-columns: 1fr; }
+  .info-card { position: static; }
+}
+
+@media(max-width: 520px) {
+  header { padding: 16px 5%; }
+  main { width: 94%; margin-top: 22px; }
+  .visual-head { padding: 14px; }
+  .info-card { padding: 18px; }
+  .tab { padding: 10px 12px; font-size: 13px; }
+  .tools { width: 100%; }
+  .tool-button { flex: 1; }
+  #cellSvg { min-height: 230px; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="brand">
+    БИОЕГЭ с Любовью
+    <span>Авторская интерактивная лаборатория</span>
+  </div>
+  <div class="header-tag">Биология · 8–11 классы · ЕГЭ</div>
+</header>
+
+<main>
+
+  <section class="intro">
+    <h1>Строение клетки</h1>
+    <p>
+      Изучите строение эукариотической клетки.
+      Выбирайте органоиды на модели, рассматривайте
+      их особенности и узнавайте, как они работают.
+    </p>
+  </section>
+
+  <section class="toolbar">
+    <div class="tabs">
+      <button class="tab active" data-cell="animal">Животная клетка</button>
+      <button class="tab" data-cell="plant">Растительная клетка</button>
+    </div>
+
+    <div class="tools">
+      <button class="tool-button" id="labelsBtn">Скрыть подписи</button>
+      <button class="tool-button" id="resetBtn">Сбросить выбор</button>
+    </div>
+  </section>
+
+  <section class="workspace">
+
+    <div>
+      <div class="visual-card">
+        <div class="visual-head">
+          <h2 id="modelTitle">Животная эукариотическая клетка</h2>
+          <span>Интерактивная модель</span>
+        </div>
+
+        <div class="diagram-wrap" id="diagramWrap">
+
+          <svg id="cellSvg" viewBox="0 0 900 620"
+               xmlns="http://www.w3.org/2000/svg"
+               role="group"
+               aria-label="Интерактивная модель клетки">
+
+            <defs>
+              <radialGradient id="cytoplasm" cx="42%" cy="35%" r="70%">
+                <stop offset="0%" stop-color="#fff9df"/>
+                <stop offset="65%" stop-color="#f2dba5"/>
+                <stop offset="100%" stop-color="#d8b978"/>
+              </radialGradient>
+
+              <radialGradient id="plantCytoplasm">
+                <stop offset="0%" stop-color="#f6f4c7"/>
+                <stop offset="100%" stop-color="#c6dca0"/>
+              </radialGradient>
+
+              <radialGradient id="nucleusGradient" cx="35%" cy="30%">
+                <stop offset="0%" stop-color="#d5c7ed"/>
+                <stop offset="100%" stop-color="#8067a9"/>
+              </radialGradient>
+
+              <linearGradient id="membraneGradient">
+                <stop offset="0%" stop-color="#6aaf88"/>
+                <stop offset="50%" stop-color="#b4d9b7"/>
+                <stop offset="100%" stop-color="#4f916c"/>
+              </linearGradient>
+
+              <linearGradient id="mitoGradient" x2="0" y2="1">
+                <stop offset="0%" stop-color="#f7a66b"/>
+                <stop offset="100%" stop-color="#b95038"/>
+              </linearGradient>
+
+              <linearGradient id="chloroplastGradient" x2="0" y2="1">
+                <stop offset="0%" stop-color="#b4d77a"/>
+                <stop offset="100%" stop-color="#48864b"/>
+              </linearGradient>
+
+              <linearGradient id="vacuoleGradient" x2="1" y2="1">
+                <stop offset="0%" stop-color="#e2f4f4"/>
+                <stop offset="100%" stop-color="#a6d4d6"/>
+              </linearGradient>
+
+              <filter id="softShadow" x="-30%" y="-30%" width="160%" height="160%">
+                <feGaussianBlur stdDeviation="9"/>
+              </filter>
+
+              <pattern id="ribosomePattern" width="15" height="15"
+                       patternUnits="userSpaceOnUse">
+                <circle cx="4" cy="4" r="2.2" fill="#66508c"/>
+              </pattern>
+            </defs>
+
+            <!-- ЖИВОТНАЯ КЛЕТКА -->
+            <g id="animalModel">
+
+              <ellipse cx="445" cy="310" rx="330" ry="245"
+                       fill="#a4b9a6" opacity=".18"
+                       filter="url(#softShadow)"/>
+
+              <path d="M445 65
+                C625 52 760 160 774 300
+                C789 450 650 548 458 555
+                C265 563 120 450 115 310
+                C110 165 257 70 445 65Z"
+                fill="url(#cytoplasm)"
+                stroke="#43815d" stroke-width="9"
+                class="focus-stroke"/>
+
+              <path d="M445 77
+                C620 64 748 168 761 301
+                C773 440 642 532 457 540
+                C273 548 135 443 130 310
+                C125 178 265 82 445 77Z"
+                fill="none" stroke="#d3e4ca" stroke-width="4"/>
+
+              <!-- Ядро -->
+              <g class="organelle" data-id="nucleus" tabindex="0" role="button">
+                <ellipse cx="425" cy="285" rx="112" ry="93"
+                         fill="url(#nucleusGradient)"
+                         stroke="#634c91" stroke-width="8"
+                         class="focus-stroke"/>
+                <ellipse cx="425" cy="285" rx="101" ry="82"
+                         fill="none" stroke="#e6dcf5" stroke-width="3"/>
+                <path d="M365 256 Q385 220 415 248 T480 247
+                         M355 305 Q390 280 420 313 T490 301
+                         M390 343 Q415 318 447 343"
+                      fill="none" stroke="#eadcf5" stroke-width="5"
+                      stroke-linecap="round"/>
+                <circle cx="446" cy="287" r="24" fill="#563c80"/>
+                <circle cx="438" cy="279" r="8" fill="#a995c7"/>
+              </g>
+
+              <!-- Шероховатая ЭПС -->
+              <g class="organelle" data-id="rer" tabindex="0" role="button">
+                <path d="M315 170 Q365 130 415 165
+                         M305 190 Q355 150 405 185
+                         M300 210 Q350 172 397 203
+                         M310 230 Q350 200 385 220"
+                      fill="none" stroke="#5584a2" stroke-width="12"
+                      stroke-linecap="round" class="focus-stroke"/>
+                <path d="M315 170 Q365 130 415 165
+                         M305 190 Q355 150 405 185"
+                      fill="none" stroke="#dceef3" stroke-width="4"/>
+                <g fill="#493e73">
+                  <circle cx="329" cy="163" r="4"/>
+                  <circle cx="355" cy="151" r="4"/>
+                  <circle cx="380" cy="152" r="4"/>
+                  <circle cx="310" cy="188" r="4"/>
+                  <circle cx="346" cy="174" r="4"/>
+                  <circle cx="378" cy="177" r="4"/>
+                  <circle cx="307" cy="210" r="4"/>
+                  <circle cx="344" cy="194" r="4"/>
+                  <circle cx="377" cy="196" r="4"/>
+                </g>
+              </g>
+
+              <!-- Гладкая ЭПС -->
+              <g class="organelle" data-id="ser" tabindex="0" role="button">
+                <path d="M505 176 Q555 140 610 170
+                         Q645 188 620 210
+                         Q580 228 545 210
+                         Q505 194 520 224
+                         Q555 252 610 237"
+                      fill="none" stroke="#3c9b9b" stroke-width="12"
+                      stroke-linecap="round" class="focus-stroke"/>
+                <path d="M505 176 Q555 140 610 170"
+                      fill="none" stroke="#b7ece0" stroke-width="4"/>
+              </g>
+
+              <!-- Аппарат Гольджи -->
+              <g class="organelle" data-id="golgi" tabindex="0" role="button">
+                <path d="M500 395 Q565 365 635 396"
+                      fill="none" stroke="#c47a36" stroke-width="13"
+                      stroke-linecap="round" class="focus-stroke"/>
+                <path d="M493 415 Q565 386 640 415"
+                      fill="none" stroke="#d99954" stroke-width="12"
+                      stroke-linecap="round"/>
+                <path d="M500 434 Q567 409 628 434"
+                      fill="none" stroke="#e5b56d" stroke-width="10"
+                      stroke-linecap="round"/>
+                <path d="M514 451 Q565 432 610 451"
+                      fill="none" stroke="#f0ce8c" stroke-width="8"
+                      stroke-linecap="round"/>
+                <g fill="#cf8544">
+                  <circle cx="482" cy="402" r="8"/>
+                  <circle cx="650" cy="394" r="9"/>
+                  <circle cx="644" cy="432" r="7"/>
+                  <circle cx="615" cy="464" r="6"/>
+                </g>
+              </g>
+
+              <!-- Митохондрии -->
+              <g class="organelle" data-id="mitochondrion" tabindex="0" role="button">
+                <path d="M210 305 C220 255 280 247 310 275
+                         C340 304 310 345 270 354
+                         C228 363 198 341 210 305Z"
+                      fill="url(#mitoGradient)"
+                      stroke="#984a36" stroke-width="5"
+                      class="focus-stroke"/>
+                <path d="M224 306 Q245 275 258 305
+                         T291 301 M225 328 Q250 303 272 329
+                         T305 315"
+                      fill="none" stroke="#ffe0ad" stroke-width="5"
+                      stroke-linecap="round"/>
+              </g>
+
+              <g class="organelle" data-id="mitochondrion" tabindex="0" role="button">
+                <path d="M565 270 C570 225 625 218 654 250
+                         C684 283 658 321 620 325
+                         C583 330 554 305 565 270Z"
+                      fill="url(#mitoGradient)"
+                      stroke="#984a36" stroke-width="5"
+                      class="focus-stroke"/>
+                <path d="M577 267 Q599 240 611 270
+                         T643 265 M574 290 Q600 268 619 294
+                         T657 286"
+                      fill="none" stroke="#ffe0ad" stroke-width="5"
+                      stroke-linecap="round"/>
+              </g>
+
+              <!-- Лизосома -->
+              <g class="organelle" data-id="lysosome" tabindex="0" role="button">
+                <circle cx="245" cy="415" r="28" fill="#e7bd69"
+                        stroke="#bd8733" stroke-width="4"
+                        class="focus-stroke"/>
+                <g fill="#a96f30">
+                  <circle cx="236" cy="407" r="4"/>
+                  <circle cx="255" cy="400" r="5"/>
+                  <circle cx="250" cy="422" r="4"/>
+                  <circle cx="233" cy="427" r="3"/>
+                </g>
+              </g>
+
+              <!-- Клеточный центр -->
+              <g class="organelle" data-id="centrosome" tabindex="0" role="button">
+                <g transform="translate(680 330) rotate(35)">
+                  <rect x="-8" y="-35" width="16" height="70"
+                        rx="7" fill="#7d70a5"
+                        stroke="#4f477b" stroke-width="3"
+                        class="focus-stroke"/>
+                  <path d="M-4 -25 L4 -25 M-4 -10 L4 -10
+                           M-4 5 L4 5 M-4 20 L4 20"
+                        stroke="#ded5f1" stroke-width="3"/>
+                </g>
+                <g transform="translate(680 330) rotate(125)">
+                  <rect x="-8" y="-35" width="16" height="70"
+                        rx="7" fill="#9585bd"
+                        stroke="#4f477b" stroke-width="3"/>
+                </g>
+              </g>
+
+              <!-- Рибосомы -->
+              <g class="organelle" data-id="ribosome" tabindex="0" role="button">
+                <g fill="#58467e" class="focus-stroke">
+                  <circle cx="460" cy="170" r="6"/>
+                  <circle cx="475" cy="184" r="6"/>
+                  <circle cx="490" cy="162" r="6"/>
+                  <circle cx="530" cy="300" r="6"/>
+                  <circle cx="550" cy="320" r="6"/>
+                  <circle cx="470" cy="485" r="6"/>
+                  <circle cx="450" cy="475" r="6"/>
+                  <circle cx="370" cy="420" r="6"/>
+                  <circle cx="355" cy="440" r="6"/>
+                </g>
+              </g>
+
+              <!-- Цитоскелет -->
+              <g class="organelle" data-id="cytoskeleton" tabindex="0" role="button">
+                <path d="M175 210 Q300 90 470 130
+                         M170 400 Q330 510 470 500
+                         M300 120 Q450 220 710 200
+                         M190 470 Q430 350 710 470"
+                      fill="none" stroke="#a08b54"
+                      stroke-width="3" stroke-dasharray="7 8"
+                      opacity=".65" class="focus-stroke"/>
+              </g>
+
+              <!-- Пероксисома -->
+              <g class="organelle" data-id="peroxisome" tabindex="0" role="button">
+                <circle cx="710" cy="240" r="20"
+                        fill="#a8d2bc" stroke="#4c9272" stroke-width="4"
+                        class="focus-stroke"/>
+                <path d="M700 240 L720 240 M710 230 L710 250"
+                      stroke="#43815d" stroke-width="3"/>
+              </g>
+
+              <!-- Цитоплазматические включения -->
+              <g class="organelle" data-id="inclusions" tabindex="0" role="button">
+                <circle cx="350" cy="495" r="10" fill="#d6a85c"
+                        class="focus-stroke"/>
+                <circle cx="380" cy="500" r="7" fill="#d6a85c"/>
+                <circle cx="395" cy="480" r="8" fill="#d6a85c"/>
+              </g>
+
+              <!-- Подписи -->
+              <g class="diagram-label">
+                <text x="390" y="195">Ядро</text>
+                <text x="285" y="135">Шероховатая ЭПС</text>
+                <text x="570" y="143">Гладкая ЭПС</text>
+                <text x="190" y="375">Митохондрия</text>
+                <text x="520" y="490">Аппарат Гольджи</text>
+                <text x="218" y="455">Лизосома</text>
+              </g>
+            </g>
+
+            <!-- РАСТИТЕЛЬНАЯ КЛЕТКА -->
+            <g id="plantModel" style="display:none">
+
+              <rect x="75" y="55" width="750" height="510" rx="36"
+                    fill="#9eaf80" opacity=".17"
+                    filter="url(#softShadow)"/>
+
+              <!-- Клеточная стенка -->
+              <g class="organelle" data-id="cellwall" tabindex="0" role="button">
+                <rect x="80" y="45" width="740" height="520" rx="35"
+                      fill="#b7ce8d" stroke="#648c55" stroke-width="14"
+                      class="focus-stroke"/>
+                <rect x="98" y="63" width="704" height="484" rx="25"
+                      fill="url(#plantCytoplasm)"
+                      stroke="#d4e3b0" stroke-width="5"/>
+              </g>
+
+              <!-- Плазматическая мембрана -->
+              <g class="organelle" data-id="membrane" tabindex="0" role="button">
+                <rect x="105" y="70" width="690" height="470" rx="20"
+                      fill="none" stroke="url(#membraneGradient)"
+                      stroke-width="8" class="focus-stroke"/>
+              </g>
+
+              <!-- Центральная вакуоль -->
+              <g class="organelle" data-id="vacuole" tabindex="0" role="button">
+                <path d="M315 165
+                         Q300 145 340 130
+                         L625 130 Q670 135 670 180
+                         L670 435 Q665 475 625 475
+                         L345 475 Q310 470 310 430Z"
+                      fill="url(#vacuoleGradient)"
+                      stroke="#72aeb3" stroke-width="9"
+                      class="focus-stroke"/>
+                <path d="M340 155 Q470 125 625 155"
+                      fill="none" stroke="#f1ffff" stroke-width="5"/>
+                <g fill="#8dc2c5" opacity=".5">
+                  <circle cx="410" cy="250" r="5"/>
+                  <circle cx="540" cy="360" r="6"/>
+                  <circle cx="600" cy="210" r="4"/>
+                  <circle cx="390" cy="390" r="4"/>
+                </g>
+              </g>
+
+              <!-- Ядро -->
+              <g class="organelle" data-id="nucleus" tabindex="0" role="button">
+                <ellipse cx="225" cy="290" rx="90" ry="75"
+                         fill="url(#nucleusGradient)"
+                         stroke="#634c91" stroke-width="8"
+                         class="focus-stroke"/>
+                <path d="M165 275 Q190 245 215 270
+                         T275 263 M165 315 Q200 285 230 315
+                         T280 306"
+                      fill="none" stroke="#eadcf5" stroke-width="5"/>
+                <circle cx="235" cy="290" r="20" fill="#563c80"/>
+              </g>
+
+              <!-- Хлоропласты -->
+              <g class="organelle" data-id="chloroplast" tabindex="0" role="button">
+                <ellipse cx="235" cy="140" rx="65" ry="34"
+                         fill="url(#chloroplastGradient)"
+                         stroke="#3f7847" stroke-width="5"
+                         class="focus-stroke"/>
+                <g stroke="#d8ef9b" stroke-width="4">
+                  <path d="M193 125 V154 M205 120 V158 M217 118 V160
+                           M229 117 V161 M241 118 V160"/>
+                  <path d="M255 120 V158 M267 125 V154"/>
+                </g>
+                <path d="M185 140 Q235 115 285 140"
+                      fill="none" stroke="#e7f4b5" stroke-width="3"/>
+              </g>
+
+              <g class="organelle" data-id="chloroplast" tabindex="0" role="button">
+                <ellipse cx="700" cy="160" rx="60" ry="33"
+                         fill="url(#chloroplastGradient)"
+                         stroke="#3f7847" stroke-width="5"
+                         class="focus-stroke"/>
+                <g stroke="#d8ef9b" stroke-width="4">
+                  <path d="M662 144 V174 M674 137 V181 M686 134 V184
+                           M698 134 V184 M710 137 V181 M722 144 V174"/>
+                </g>
+              </g>
+
+              <g class="organelle" data-id="chloroplast" tabindex="0" role="button">
+                <ellipse cx="725" cy="450" rx="60" ry="33"
+                         fill="url(#chloroplastGradient)"
+                         stroke="#3f7847" stroke-width="5"
+                         class="focus-stroke"/>
+                <g stroke="#d8ef9b" stroke-width="4">
+                  <path d="M687 434 V465 M699 427 V473 M711 424 V476
+                           M723 424 V476 M735 427 V473 M747 434 V465"/>
+                </g>
+              </g>
+
+              <!-- Митохондрия -->
+              <g class="organelle" data-id="mitochondrion" tabindex="0" role="button">
+                <path d="M170 405 C175 370 230 365 255 390
+                         C280 415 250 445 215 445
+                         C180 445 160 430 170 405Z"
+                      fill="url(#mitoGradient)"
+                      stroke="#984a36" stroke-width="5"
+                      class="focus-stroke"/>
+                <path d="M185 405 Q205 385 215 407
+                         T248 402 M180 425 Q205 405 225 427"
+                      fill="none" stroke="#ffe0ad" stroke-width="4"/>
+              </g>
+
+              <!-- ЭПС -->
+              <g class="organelle" data-id="rer" tabindex="0" role="button">
+                <path d="M155 200 Q180 175 210 200
+                         M150 215 Q180 190 210 215
+                         M150 230 Q180 205 210 230"
+                      fill="none" stroke="#5584a2" stroke-width="9"
+                      stroke-linecap="round" class="focus-stroke"/>
+                <g fill="#493e73">
+                  <circle cx="165" cy="195" r="4"/>
+                  <circle cx="185" cy="195" r="4"/>
+                  <circle cx="155" cy="215" r="4"/>
+                  <circle cx="190" cy="215" r="4"/>
+                </g>
+              </g>
+
+              <!-- Аппарат Гольджи -->
+              <g class="organelle" data-id="golgi" tabindex="0" role="button">
+                <path d="M500 510 Q560 485 625 510"
+                      fill="none" stroke="#c47a36" stroke-width="11"
+                      stroke-linecap="round" class="focus-stroke"/>
+                <path d="M505 525 Q560 505 620 525"
+                      fill="none" stroke="#d99954" stroke-width="9"
+                      stroke-linecap="round"/>
+                <path d="M520 540 Q560 525 605 540"
+                      fill="none" stroke="#e5b56d" stroke-width="7"
+                      stroke-linecap="round"/>
+              </g>
+
+              <!-- Рибосомы -->
+              <g class="organelle" data-id="ribosome" tabindex="0" role="button">
+                <g fill="#58467e" class="focus-stroke">
+                  <circle cx="295" cy="195" r="6"/>
+                  <circle cx="285" cy="215" r="6"/>
+                  <circle cx="290" cy="245" r="6"/>
+                  <circle cx="280" cy="350" r="6"/>
+                  <circle cx="295" cy="365" r="6"/>
+                  <circle cx="290" cy="390" r="6"/>
+                </g>
+              </g>
+
+              <!-- Цитоскелет -->
+              <g class="organelle" data-id="cytoskeleton" tabindex="0" role="button">
+                <path d="M125 310 Q300 80 450 110
+                         M140 490 Q320 500 490 470
+                         M200 100 Q440 250 760 240"
+                      fill="none" stroke="#a08b54"
+                      stroke-width="3" stroke-dasharray="7 8"
+                      opacity=".7" class="focus-stroke"/>
+              </g>
+
+              <!-- Пероксисома -->
+              <g class="organelle" data-id="peroxisome" tabindex="0" role="button">
+                <circle cx="285" cy="465" r="19"
+                        fill="#a8d2bc" stroke="#4c9272" stroke-width="4"
+                        class="focus-stroke"/>
+              </g>
+
+              <!-- Подписи -->
+              <g class="diagram-label">
+                <text x="160" y="90">Хлоропласт</text>
+                <text x="175" y="290">Ядро</text>
+                <text x="430" y="300">Центральная вакуоль</text>
+                <text x="620" y="90">Хлоропласт</text>
+                <text x="90" y="535">Клеточная стенка</text>
+                <text x="470" y="490">Аппарат Гольджи</text>
+              </g>
+            </g>
+
+          </svg>
+        </div>
+
+        <div class="diagram-hint">
+          Нажмите на органоид на модели или выберите его в списке ниже.
+        </div>
+      </div>
+
+      <div class="list-card">
+        <h2>Органоиды и структуры клетки</h2>
+        <div class="organelle-list" id="organelleList"></div>
+
+        <div class="compare-note" id="compareNote">
+          <b>Обратите внимание:</b>
+          растительная и животная клетки имеют общее эукариотическое
+          строение, но отличаются наличием клеточной стенки,
+          пластид и крупной центральной вакуоли у типичной
+          растительной клетки.
+        </div>
+      </div>
+    </div>
+
+    <aside class="info-card" id="infoCard">
+      <div class="info-top">
+        <div class="info-icon">🔬</div>
+        <div>
+          <h2>Изучаем клетку</h2>
+          <div class="info-subtitle">Выберите органоид на модели</div>
+        </div>
+      </div>
+
+      <p class="empty-state">
+        Здесь появится подробная информация об органоиде:
+        особенности строения, функции, мембранная организация
+        и значение для клетки.
+      </p>
+    </aside>
+
+  </section>
+</main>
+
+<footer>
+  БИОЕГЭ с Любовью · Интерактивная лаборатория клетки
+</footer>
+
+<script>
+"use strict";
+
+/* ======================================
+   БАЗА ДАННЫХ ОРГАНОИДОВ
+====================================== */
+
+const organelles = {
+
+  nucleus: {
+    name: "Ядро",
+    icon: "🟣",
+    membrane: "Двумембранный органоид",
+    description:
+      "Ядро — важнейшая структура эукариотической клетки. Оно содержит основную часть наследственного материала клетки, организованного в виде хроматина. Ядро регулирует процессы жизнедеятельности через реализацию генетической информации.",
+    structure: [
+      "Наружная и внутренняя ядерные мембраны.",
+      "Ядерные поры, обеспечивающие обмен веществами между ядром и цитоплазмой.",
+      "Кариоплазма — внутренняя среда ядра.",
+      "Хроматин — комплекс ДНК и белков.",
+      "Ядрышко — область образования рРНК и сборки субъединиц рибосом."
+    ],
+    functions: [
+      "Хранение и передача наследственной информации.",
+      "Регуляция процессов жизнедеятельности клетки.",
+      "Участие в реализации генетической информации.",
+      "Обеспечение репликации ДНК перед делением клетки."
+    ],
+    location: "В большинстве эукариотических клеток. Зрелые эритроциты млекопитающих ядра не имеют."
+  },
+
+  mitochondrion: {
+    name: "Митохондрия",
+    icon: "🟠",
+    membrane: "Двумембранный органоид",
+    description:
+      "Митохондрии — органоиды, в которых происходят основные этапы аэробного клеточного дыхания. Они обеспечивают клетку энергией, запасаемой в молекулах АТФ.",
+    structure: [
+      "Наружная мембрана — относительно гладкая.",
+      "Внутренняя мембрана образует складки — кристы.",
+      "Межмембранное пространство.",
+      "Матрикс — внутреннее содержимое митохондрии.",
+      "Собственные кольцевая ДНК, РНК и рибосомы."
+    ],
+    functions: [
+      "Окисление органических веществ.",
+      "Образование АТФ при окислительном фосфорилировании.",
+      "Участие в клеточном дыхании.",
+      "Участие в регуляции некоторых процессов клеточной гибели."
+    ],
+    location: "В цитоплазме большинства эукариотических клеток."
+  },
+
+  chloroplast: {
+    name: "Хлоропласт",
+    icon: "🟢",
+    membrane: "Двумембранный органоид",
+    description:
+      "Хлоропласты — пластиды зелёных растений и некоторых водорослей. В них осуществляется фотосинтез — преобразование энергии света в химическую энергию органических веществ.",
+    structure: [
+      "Наружная и внутренняя мембраны.",
+      "Строма — внутреннее содержимое хлоропласта.",
+      "Тилакоиды — уплощённые мембранные структуры.",
+      "Граны — стопки тилакоидов.",
+      "Ламеллы — мембранные структуры, соединяющие граны.",
+      "Собственные кольцевая ДНК и рибосомы."
+    ],
+    functions: [
+      "Поглощение энергии света пигментами.",
+      "Световые реакции фотосинтеза происходят на мембранах тилакоидов.",
+      "Цикл Кальвина происходит в строме.",
+      "Образование органических веществ в процессе фотосинтеза."
+    ],
+    location: "В клетках фотосинтезирующих тканей зелёных растений и некоторых водорослей."
+  },
+
+  rer: {
+    name: "Шероховатая ЭПС",
+    icon: "🔵",
+    membrane: "Одномембранный органоид",
+    description:
+      "Шероховатая эндоплазматическая сеть — система мембранных канальцев и уплощённых полостей, на наружной поверхности которых расположены рибосомы.",
+    structure: [
+      "Мембранные канальцы и цистерны.",
+      "Поверхностно расположенные рибосомы.",
+      "Полости, связанные с внутренней средой ЭПС."
+    ],
+    functions: [
+      "Синтез белков на связанных с ЭПС рибосомах.",
+      "Начальные этапы модификации ряда белков.",
+      "Участие в образовании мембран.",
+      "Транспорт белков к другим клеточным структурам."
+    ],
+    location: "В цитоплазме эукариотических клеток."
+  },
+
+  ser: {
+    name: "Гладкая ЭПС",
+    icon: "🩵",
+    membrane: "Одномембранный органоид",
+    description:
+      "Гладкая эндоплазматическая сеть — система мембранных канальцев и полостей, на поверхности которых отсутствуют рибосомы.",
+    structure: [
+      "Сеть мембранных канальцев.",
+      "Внутренние полости.",
+      "Отсутствие связанных с мембраной рибосом."
+    ],
+    functions: [
+      "Синтез липидов.",
+      "Участие в обмене углеводов.",
+      "Обезвреживание некоторых веществ.",
+      "Накопление ионов кальция в специализированных клетках."
+    ],
+    location: "В цитоплазме эукариотических клеток."
+  },
+
+  golgi: {
+    name: "Аппарат Гольджи",
+    icon: "🟡",
+    membrane: "Одномембранный органоид",
+    description:
+      "Аппарат Гольджи — система уплощённых мембранных цистерн и пузырьков. Он принимает вещества, поступающие из эндоплазматической сети, модифицирует их, сортирует и направляет к месту назначения.",
+    structure: [
+      "Стопки уплощённых цистерн.",
+      "Транспортные пузырьки.",
+      "Формирующая и созревающая стороны комплекса."
+    ],
+    functions: [
+      "Модификация белков и липидов.",
+      "Сортировка и упаковка веществ.",
+      "Образование транспортных пузырьков.",
+      "Участие в образовании лизосом у животных клеток.",
+      "Участие в секреции веществ."
+    ],
+    location: "В цитоплазме эукариотических клеток."
+  },
+
+  ribosome: {
+    name: "Рибосомы",
+    icon: "🟣",
+    membrane: "Немембранная структура",
+    description:
+      "Рибосомы — сложные молекулярные комплексы, состоящие из рРНК и белков. Они обеспечивают трансляцию — синтез полипептидной цепи по последовательности кодонов иРНК.",
+    structure: [
+      "Большая субъединица.",
+      "Малая субъединица.",
+      "Рибосомальная РНК и белки.",
+      "В цитоплазме эукариот находятся 80S-рибосомы; в митохондриях и пластидах — рибосомы прокариотического типа."
+    ],
+    functions: [
+      "Синтез белка.",
+      "Обеспечение процесса трансляции.",
+      "Образование полипептидных цепей."
+    ],
+    location: "Свободно в цитоплазме, на шероховатой ЭПС, а также внутри митохондрий и пластид."
+  },
+
+  lysosome: {
+    name: "Лизосома",
+    icon: "🟠",
+    membrane: "Одномембранный органоид",
+    description:
+      "Лизосомы — мембранные пузырьки, содержащие гидролитические ферменты. Внутри них происходит расщепление различных веществ в кислой среде.",
+    structure: [
+      "Одна мембрана.",
+      "Внутреннее содержимое с гидролитическими ферментами.",
+      "Кислая внутренняя среда."
+    ],
+    functions: [
+      "Внутриклеточное пищеварение.",
+      "Расщепление поступивших в клетку веществ.",
+      "Разрушение старых клеточных компонентов.",
+      "Участие в процессах аутофагии."
+    ],
+    location: "Особенно характерны для животных клеток. У растений сходные функции выполняют литические вакуоли."
+  },
+
+  centrosome: {
+    name: "Клеточный центр",
+    icon: "🟣",
+    membrane: "Немембранная структура",
+    description:
+      "Клеточный центр — центр организации микротрубочек, характерный для многих животных клеток. Обычно включает две центриоли, расположенные под углом друг к другу.",
+    structure: [
+      "Две центриоли.",
+      "Каждая центриоль построена из девяти триплетов микротрубочек.",
+      "Окружающий центриоли перицентриолярный материал."
+    ],
+    functions: [
+      "Организация микротрубочек.",
+      "Участие в формировании веретена деления.",
+      "Обеспечение организации цитоскелета."
+    ],
+    location: "Характерен для большинства животных клеток. У высших растений типичный клеточный центр с центриолями отсутствует."
+  },
+
+  cytoskeleton: {
+    name: "Цитоскелет",
+    icon: "🟤",
+    membrane: "Немембранная система",
+    description:
+      "Цитоскелет — динамическая система белковых структур, поддерживающая форму клетки и обеспечивающая внутриклеточное движение.",
+    structure: [
+      "Микротрубочки.",
+      "Актиновые микрофиламенты.",
+      "Промежуточные филаменты."
+    ],
+    functions: [
+      "Поддержание формы клетки.",
+      "Перемещение органоидов и пузырьков.",
+      "Участие в движении клетки.",
+      "Участие в делении клетки."
+    ],
+    location: "В цитоплазме эукариотических клеток."
+  },
+
+  peroxisome: {
+    name: "Пероксисома",
+    icon: "🟢",
+    membrane: "Одномембранный органоид",
+    description:
+      "Пероксисомы — небольшие мембранные органоиды, содержащие ферменты окислительных реакций, в том числе каталазу.",
+    structure: [
+      "Одна мембрана.",
+      "Матрикс с окислительными ферментами.",
+      "Ферменты, участвующие в обмене перекиси водорода."
+    ],
+    functions: [
+      "Окисление ряда органических соединений.",
+      "Обезвреживание перекиси водорода с помощью каталазы.",
+      "Участие в обмене липидов."
+    ],
+    location: "В клетках растений и животных."
+  },
+
+  inclusions: {
+    name: "Клеточные включения",
+    icon: "🟡",
+    membrane: "Немембранные образования",
+    description:
+      "Клеточные включения — непостоянные компоненты цитоплазмы, представляющие собой продукты обмена веществ или запасы питательных веществ.",
+    structure: [
+      "Капли липидов.",
+      "Гранулы гликогена.",
+      "Зёрна крахмала.",
+      "Пигментные включения."
+    ],
+    functions: [
+      "Запасание питательных веществ.",
+      "Накопление продуктов обмена.",
+      "Участие в обеспечении клетки ресурсами."
+    ],
+    location: "В цитоплазме различных клеток."
+  },
+
+  membrane: {
+    name: "Плазматическая мембрана",
+    icon: "🟢",
+    membrane: "Одномембранная структура",
+    description:
+      "Плазматическая мембрана отделяет содержимое клетки от внешней среды и регулирует обмен веществ между клеткой и окружающей средой.",
+    structure: [
+      "Фосфолипидный бислой.",
+      "Интегральные и периферические белки.",
+      "Холестерин в мембранах многих животных клеток.",
+      "Углеводные компоненты на наружной поверхности."
+    ],
+    functions: [
+      "Барьерная функция.",
+      "Избирательный транспорт веществ.",
+      "Рецепция сигналов.",
+      "Межклеточное взаимодействие.",
+      "Поддержание клеточного гомеостаза."
+    ],
+    location: "Ограничивает каждую клетку."
+  },
+
+  cellwall: {
+    name: "Клеточная стенка",
+    icon: "🟩",
+    membrane: "Немембранная структура",
+    description:
+      "Клеточная стенка растений — прочная структура, расположенная снаружи от плазматической мембраны. Основной компонент её каркаса — целлюлоза.",
+    structure: [
+      "Целлюлозные микрофибриллы.",
+      "Матрикс из других полисахаридов.",
+      "У многих клеток также присутствуют пектины.",
+      "У некоторых клеток формируются дополнительные слои."
+    ],
+    functions: [
+      "Поддержание формы клетки.",
+      "Механическая защита.",
+      "Предотвращение чрезмерного увеличения клетки при поступлении воды.",
+      "Участие в межклеточных взаимодействиях."
+    ],
+    location: "У растительных клеток, грибов и многих других организмов; химический состав стенок различается."
+  },
+
+  vacuole: {
+    name: "Центральная вакуоль",
+    icon: "🩵",
+    membrane: "Одномембранный органоид",
+    description:
+      "Центральная вакуоль зрелой растительной клетки — крупная полость, заполненная клеточным соком и ограниченная мембраной, называемой тонопластом.",
+    structure: [
+      "Тонопласт — мембрана вакуоли.",
+      "Клеточный сок.",
+      "Растворённые минеральные соли, сахара, органические кислоты и другие вещества."
+    ],
+    functions: [
+      "Поддержание тургорного давления.",
+      "Накопление и хранение веществ.",
+      "Участие в регуляции водного баланса.",
+      "Участие в расщеплении некоторых веществ."
+    ],
+    location: "Особенно крупная центральная вакуоль характерна для зрелых растительных клеток."
+  }
+};
+
+/* ======================================
+   ЭЛЕМЕНТЫ ИНТЕРФЕЙСА
+====================================== */
+
+const animalModel = document.getElementById("animalModel");
+const plantModel = document.getElementById("plantModel");
+const cellSvg = document.getElementById("cellSvg");
+const infoCard = document.getElementById("infoCard");
+const organelleList = document.getElementById("organelleList");
+const modelTitle = document.getElementById("modelTitle");
+const diagramWrap = document.getElementById("diagramWrap");
+const labelsBtn = document.getElementById("labelsBtn");
+const resetBtn = document.getElementById("resetBtn");
+const compareNote = document.getElementById("compareNote");
+
+let currentCell = "animal";
+let selectedOrganelle = null;
+let labelsVisible = true;
+
+/* ======================================
+   СПИСКИ ОРГАНОИДОВ
+====================================== */
+
+const cellLists = {
+  animal: [
+    "nucleus",
+    "mitochondrion",
+    "rer",
+    "ser",
+    "golgi",
+    "ribosome",
+    "lysosome",
+    "centrosome",
+    "cytoskeleton",
+    "peroxisome",
+    "membrane",
+    "inclusions"
+  ],
+
+  plant: [
+    "nucleus",
+    "mitochondrion",
+    "chloroplast",
+    "rer",
+    "ser",
+    "golgi",
+    "ribosome",
+    "cytoskeleton",
+    "peroxisome",
+    "membrane",
+    "cellwall",
+    "vacuole",
+    "inclusions"
+  ]
+};
+
+/* ======================================
+   ОТОБРАЖЕНИЕ ИНФОРМАЦИИ
+====================================== */
+
+function showInfo(id) {
+  const item = organelles[id];
+  if (!item) return;
+
+  selectedOrganelle = id;
+
+  document.querySelectorAll(".organelle").forEach(el => {
+    el.classList.toggle("selected", el.dataset.id === id);
+  });
+
+  document.querySelectorAll(".organelle-button").forEach(btn => {
+    btn.classList.toggle("active", btn.dataset.id === id);
+  });
+
+  infoCard.innerHTML = `
+    <div class="info-top">
+      <div class="info-icon">${item.icon}</div>
+      <div>
+        <h2>${item.name}</h2>
+        <div class="info-subtitle">Строение и функции</div>
+      </div>
+    </div>
+
+    <div class="membrane-tag">${item.membrane}</div>
+
+    <p class="info-description">${item.description}</p>
+
+    <div class="info-section">
+      <h3>Особенности строения</h3>
+      <ul>
+        ${item.structure.map(x => `<li>${x}</li>`).join("")}
+      </ul>
+    </div>
+
+    <div class="info-section">
+      <h3>Основные функции</h3>
+      <ul>
+        ${item.functions.map(x => `<li>${x}</li>`).join("")}
+      </ul>
+    </div>
+
+    <div class="info-section">
+      <h3>Расположение</h3>
+      <p>${item.location}</p>
+    </div>
+  `;
+
+  infoCard.scrollIntoView({
+    behavior: "smooth",
+    block: "nearest"
+  });
+}
+
+/* ======================================
+   СОЗДАНИЕ СПИСКА
+====================================== */
+
+function buildList() {
+  organelleList.innerHTML = "";
+
+  cellLists[currentCell].forEach(id => {
+    const item = organelles[id];
+
+    const button = document.createElement("button");
+    button.className = "organelle-button";
+    button.dataset.id = id;
+    button.textContent = item.name;
+
+    button.addEventListener("click", () => showInfo(id));
+
+    organelleList.appendChild(button);
+  });
+}
+
+/* ======================================
+   ПЕРЕКЛЮЧЕНИЕ ТИПА КЛЕТКИ
+====================================== */
+
+function switchCell(type) {
+  currentCell = type;
+  selectedOrganelle = null;
+
+  animalModel.style.display =
+    type === "animal" ? "block" : "none";
+
+  plantModel.style.display =
+    type === "plant" ? "block" : "none";
+
+  modelTitle.textContent =
+    type === "animal"
+      ? "Животная эукариотическая клетка"
+      : "Растительная эукариотическая клетка";
+
+  document.querySelectorAll(".tab").forEach(tab => {
+    tab.classList.toggle(
+      "active",
+      tab.dataset.cell === type
+    );
+  });
+
+  compareNote.classList.toggle("visible", type === "plant");
+
+  infoCard.innerHTML = `
+    <div class="info-top">
+      <div class="info-icon">${type === "animal" ? "🔬" : "🌿"}</div>
+      <div>
+        <h2>${type === "animal" ? "Животная клетка" : "Растительная клетка"}</h2>
+        <div class="info-subtitle">Выберите органоид на модели</div>
+      </div>
+    </div>
+    <p class="empty-state">
+      Выберите интересующую структуру, чтобы изучить
+      её строение, функции и особенности.
+    </p>
+  `;
+
+  buildList();
+}
+
+/* ======================================
+   ОБРАБОТКА НАЖАТИЙ НА МОДЕЛИ
+====================================== */
+
+cellSvg.addEventListener("click", event => {
+  const target = event.target.closest(".organelle");
+  if (!target) return;
+
+  const id = target.dataset.id;
+  if (id) showInfo(id);
+});
+
+cellSvg.addEventListener("keydown", event => {
+  if (event.key !== "Enter" && event.key !== " ") return;
+
+  const target = event.target.closest(".organelle");
+  if (!target) return;
+
+  event.preventDefault();
+  showInfo(target.dataset.id);
+});
+
+/* ======================================
+   ПЕРЕКЛЮЧЕНИЕ КЛЕТОК
+====================================== */
+
+document.querySelectorAll(".tab").forEach(tab => {
+  tab.addEventListener("click", () => {
+    switchCell(tab.dataset.cell);
+  });
+});
+
+/* ======================================
+   ПОКАЗ / СКРЫТИЕ ПОДПИСЕЙ
+====================================== */
+
+labelsBtn.addEventListener("click", () => {
+  labelsVisible = !labelsVisible;
+
+  diagramWrap.classList.toggle(
+    "labels-hidden",
+    !labelsVisible
+  );
+
+  labelsBtn.textContent =
+    labelsVisible ? "Скрыть подписи" : "Показать подписи";
+});
+
+/* ======================================
+   СБРОС ВЫБОРА
+====================================== */
+
+resetBtn.addEventListener("click", () => {
+  selectedOrganelle = null;
+
+  document.querySelectorAll(".organelle").forEach(el => {
+    el.classList.remove("selected");
+  });
+
+  document.querySelectorAll(".organelle-button").forEach(btn => {
+    btn.classList.remove("active");
+  });
+
+  infoCard.innerHTML = `
+    <div class="info-top">
+      <div class="info-icon">🔬</div>
+      <div>
+        <h2>Изучаем клетку</h2>
+        <div class="info-subtitle">Выберите органоид на модели</div>
+      </div>
+    </div>
+    <p class="empty-state">
+      Выберите интересующую структуру на модели
+      или в списке органоидов.
+    </p>
+  `;
+});
+
+/* ======================================
+   ЗАПУСК
+====================================== */
+
+switchCell("animal");
+
+</script>
+
+</body>
+</html>
+
