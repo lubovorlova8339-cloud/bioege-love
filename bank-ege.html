@@ -1,1 +1,346 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Банк заданий ЕГЭ по биологии — БИОЕГЭ с Любовью</title>
+<meta name="description" content="Тематический банк заданий ЕГЭ по биологии. Практика, проверка знаний и подготовка к ЕГЭ.">
+<style>
+:root {
+  --green: #315c43;
+  --green-dark: #234631;
+  --green-light: #eaf1e9;
+  --gold: #c5a45b;
+  --cream: #faf8f1;
+  --white: #ffffff;
+  --text: #29352d;
+  --muted: #718075;
+  --border: #e4e9df;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: var(--cream);
+  color: var(--text);
+  line-height: 1.6;
+}
+header {
+  background: var(--green-dark);
+  color: white;
+  padding: 17px 6%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+.logo {
+  font-size: 19px;
+  font-weight: bold;
+  letter-spacing: .3px;
+}
+.logo span { color: #e3c77e; }
+header a {
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+}
+header a:hover { color: #e3c77e; }
+.hero {
+  background: linear-gradient(135deg, #315c43, #426e50);
+  color: white;
+  text-align: center;
+  padding: 65px 20px 70px;
+}
+.hero-label {
+  color: #e5cd8e;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 12px;
+  font-weight: bold;
+}
+.hero h1 {
+  font-size: clamp(29px, 5vw, 45px);
+  line-height: 1.2;
+  margin: 16px auto;
+  max-width: 800px;
+}
+.hero p {
+  max-width: 650px;
+  margin: 0 auto;
+  color: #e5eee5;
+  font-size: 17px;
+}
+.hero-line {
+  width: 65px;
+  height: 3px;
+  background: var(--gold);
+  margin: 25px auto 0;
+  border-radius: 5px;
+}
+.container {
+  max-width: 1120px;
+  margin: auto;
+  padding: 45px 20px 70px;
+}
+.section-title {
+  text-align: center;
+  margin-bottom: 12px;
+  color: var(--green-dark);
+  font-size: 27px;
+}
+.section-description {
+  text-align: center;
+  color: var(--muted);
+  max-width: 650px;
+  margin: 0 auto 35px;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+.card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 25px 23px;
+  display: flex;
+  flex-direction: column;
+  min-height: 235px;
+  box-shadow: 0 5px 18px rgba(37, 65, 43, .045);
+  transition: transform .2s, box-shadow .2s;
+}
+.card.active:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(37, 65, 43, .11);
+}
+.card-icon {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  border-radius: 13px;
+  background: var(--green-light);
+  font-size: 25px;
+  margin-bottom: 14px;
+}
+.card h3 {
+  margin: 0 0 8px;
+  color: var(--green-dark);
+  font-size: 19px;
+}
+.card p {
+  color: var(--muted);
+  font-size: 14px;
+  margin: 0 0 18px;
+}
+.card-bottom {
+  margin-top: auto;
+}
+.card-link {
+  display: inline-block;
+  background: var(--green);
+  color: white;
+  text-decoration: none;
+  padding: 10px 17px;
+  border-radius: 9px;
+  font-size: 14px;
+  font-weight: bold;
+  transition: background .2s;
+}
+.card-link:hover { background: var(--green-dark); }
+.status {
+  display: inline-block;
+  font-size: 12px;
+  color: #8b7949;
+  background: #f7f1df;
+  border-radius: 20px;
+  padding: 5px 11px;
+  font-weight: bold;
+}
+.info {
+  margin-top: 45px;
+  padding: 28px;
+  background: #edf2e9;
+  border-left: 4px solid var(--gold);
+  border-radius: 12px;
+}
+.info h3 {
+  color: var(--green-dark);
+  margin: 0 0 8px;
+}
+.info p {
+  margin: 0;
+  color: #59675c;
+  font-size: 14px;
+}
+footer {
+  background: var(--green-dark);
+  color: #e6eee6;
+  text-align: center;
+  padding: 27px 15px;
+  font-size: 13px;
+}
+footer strong { color: #e3c77e; }
+footer a {
+  color: white;
+  text-decoration: none;
+}
+@media (max-width: 850px) {
+  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 560px) {
+  header { justify-content: center; text-align: center; }
+  .hero { padding: 48px 18px; }
+  .container { padding: 35px 15px 50px; }
+  .grid { grid-template-columns: 1fr; }
+  .card { min-height: 205px; }
+  .section-title { font-size: 24px; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">БИОЕГЭ <span>с Любовью</span></div>
+  <a href="index.html">← На главную сайта</a>
+</header>
+
+<section class="hero">
+  <div class="hero-label">Подготовка к ЕГЭ · Биология</div>
+  <h1>Тематический банк заданий ЕГЭ</h1>
+  <p>
+    Изучай биологию системно, закрепляй теорию
+    и проверяй свои знания на практике.
+    Выбирай интересующую тему и начинай работу!
+  </p>
+  <div class="hero-line"></div>
+</section>
+
+<main class="container">
+  <h2 class="section-title">Выбери раздел</h2>
+  <p class="section-description">
+    Практические задания по основным разделам биологии.
+    Новые тематические подборки будут постепенно добавляться.
+  </p>
+
+  <div class="grid">
+
+    <article class="card active">
+      <div class="card-icon">🍄</div>
+      <h3>Грибы и лишайники</h3>
+      <p>
+        Строение, питание, размножение грибов,
+        разнообразие и значение в природе.
+      </p>
+      <div class="card-bottom">
+        <a class="card-link" href="bank-ege-griby.html">
+          Перейти к заданиям →
+        </a>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-icon">🔬</div>
+      <h3>Клетка и химический состав</h3>
+      <p>
+        Органоиды, мембраны, вещества клетки,
+        обмен веществ и клеточные процессы.
+      </p>
+      <div class="card-bottom"><span class="status">Скоро</span></div>
+    </article>
+
+    <article class="card">
+      <div class="card-icon">🧬</div>
+      <h3>Генетика</h3>
+      <p>
+        Закономерности наследования, генотип,
+        фенотип, сцепленное наследование и задачи.
+      </p>
+      <div class="card-bottom"><span class="status">Скоро</span></div>
+    </article>
+
+    <article class="card">
+      <div class="card-icon">🌿</div>
+      <h3>Ботаника</h3>
+      <p>
+        Растительные ткани и органы, жизненные циклы,
+        систематика и физиология растений.
+      </p>
+      <div class="card-bottom"><span class="status">Скоро</span></div>
+    </article>
+
+    <article class="card">
+      <div class="card-icon">🐾</div>
+      <h3>Зоология</h3>
+      <p>
+        Многообразие животных, особенности строения,
+        жизнедеятельность и систематика.
+      </p>
+      <div class="card-bottom"><span class="status">Скоро</span></div>
+    </article>
+
+    <article class="card">
+      <div class="card-icon">🫀</div>
+      <h3>Анатомия и физиология человека</h3>
+      <p>
+        Системы органов, регуляция функций,
+        иммунитет и поддержание гомеостаза.
+      </p>
+      <div class="card-bottom"><span class="status">Скоро</span></div>
+    </article>
+
+    <article class="card">
+      <div class="card-icon">🌍</div>
+      <h3>Экология</h3>
+      <p>
+        Экологические факторы, сообщества,
+        цепи питания и закономерности экологии.
+      </p>
+      <div class="card-bottom"><span class="status">Скоро</span></div>
+    </article>
+
+    <article class="card">
+      <div class="card-icon">🦕</div>
+      <h3>Эволюция</h3>
+      <p>
+        Движущие силы эволюции, естественный отбор,
+        видообразование и доказательства эволюции.
+      </p>
+      <div class="card-bottom"><span class="status">Скоро</span></div>
+    </article>
+
+    <article class="card">
+      <div class="card-icon">⚗️</div>
+      <h3>Обмен веществ и энергия</h3>
+      <p>
+        Фотосинтез, клеточное дыхание,
+        пластический и энергетический обмен.
+      </p>
+      <div class="card-bottom"><span class="status">Скоро</span></div>
+    </article>
+
+  </div>
+
+  <section class="info">
+    <h3>Как работать с банком заданий?</h3>
+    <p>
+      Выбери тематический раздел, внимательно прочитай условие
+      и выполни задания. После прохождения практикума
+      используй проверку ответов и разбор ошибок,
+      чтобы определить темы, которые требуют повторения.
+    </p>
+  </section>
+</main>
+
+<footer>
+  <strong>БИОЕГЭ с Любовью</strong><br>
+  Биология · ОГЭ · ЕГЭ<br>
+  <a href="index.html">Вернуться на главную</a>
+</footer>
+
+</body>
+</html>
 
