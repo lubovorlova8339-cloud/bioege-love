@@ -4,137 +4,195 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Грибы и лишайники — ЕГЭ | БИОЕГЭ с Любовью</title>
+<title>Грибы и лишайники — ЕГЭ-2027</title>
 
 <style>
 :root {
-  --green:#286342;
-  --dark:#19452e;
-  --light:#edf5ed;
-  --gold:#b99543;
-  --text:#29372e;
-  --muted:#718075;
-  --border:#dce7dc;
+  --green: #285b43;
+  --green-light: #eaf2eb;
+  --gold: #c5a052;
+  --cream: #faf9f4;
+  --text: #28372e;
+  --border: #dce5dc;
 }
-* {box-sizing:border-box}
+
+* { box-sizing: border-box; }
+
 body {
-  margin:0;
-  font-family:Arial,sans-serif;
-  color:var(--text);
-  background:#f7faf7;
-  line-height:1.6;
+  margin: 0;
+  background: var(--cream);
+  color: var(--text);
+  font-family: Arial, sans-serif;
+  line-height: 1.55;
 }
+
 header {
-  background:linear-gradient(120deg,#194b32,#34734b);
-  color:white;
-  padding:38px 20px;
-  text-align:center;
+  background: linear-gradient(120deg,#204b37,#39785a);
+  color: white;
+  padding: 30px 20px;
 }
-header .brand {
-  color:#e6d49b;
-  font-size:13px;
-  letter-spacing:2px;
-  font-weight:bold;
-}
-header h1 {
-  font-size:clamp(27px,5vw,39px);
-  margin:12px 0;
-}
-header p {margin:0;color:#e4eee5}
+
 .container {
-  max-width:950px;
-  margin:28px auto;
-  padding:0 16px 50px;
+  max-width: 1100px;
+  margin: auto;
+  padding: 0 18px;
 }
-.intro,.question,.essay,.result {
-  background:white;
-  border:1px solid var(--border);
-  border-radius:15px;
-  padding:22px;
-  margin-bottom:18px;
-  box-shadow:0 4px 15px rgba(30,70,40,.04);
+
+.logo {
+  color: #e7d8ac;
+  letter-spacing: 2px;
+  font-size: 13px;
 }
-.intro {border-left:5px solid var(--gold)}
-h2 {color:var(--green);font-size:23px}
-h3 {margin:0 0 12px;color:var(--dark)}
-.section-title {
-  margin:35px 0 16px;
-  padding-bottom:10px;
-  border-bottom:2px solid #dce8dc;
+
+h1 {
+  font-size: 34px;
+  margin: 12px 0 5px;
 }
-.tag {
-  display:inline-block;
-  background:#edf5ed;
-  color:#286342;
-  padding:4px 10px;
-  border-radius:20px;
-  font-size:12px;
-  font-weight:bold;
-  margin-bottom:12px;
+
+.subtitle { color: #e3eee5; }
+
+main { padding: 25px 0 60px; }
+
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 25px 0;
 }
-.question p,.essay p {margin:9px 0}
-.option {
-  display:flex;
-  gap:10px;
-  align-items:flex-start;
-  padding:10px 12px;
-  margin:7px 0;
-  border:1px solid #e5ece5;
-  border-radius:9px;
-  cursor:pointer;
-}
-.option:hover {background:#f5f9f4}
-.option input {margin-top:5px;accent-color:var(--green)}
-input[type=text],textarea {
-  width:100%;
-  padding:12px;
-  border:1px solid #cddbcf;
-  border-radius:9px;
-  font:inherit;
-  margin-top:8px;
-}
-textarea {min-height:105px;resize:vertical}
+
 button {
-  border:0;
-  border-radius:10px;
-  padding:12px 20px;
-  font-size:15px;
-  font-weight:bold;
-  cursor:pointer;
+  border: 0;
+  border-radius: 9px;
+  padding: 11px 16px;
+  background: var(--green);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
 }
-.primary {background:var(--green);color:white}
-.primary:hover {background:var(--dark)}
-.secondary {background:#edf3ed;color:var(--green)}
-.buttons {display:flex;gap:10px;flex-wrap:wrap;margin:22px 0}
+
+button:hover { opacity: .88; }
+
+.tab {
+  background: var(--green-light);
+  color: var(--green);
+}
+
+.tab.active {
+  background: var(--green);
+  color: white;
+}
+
+.question {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 20px;
+  margin: 16px 0;
+}
+
+.question-title {
+  font-weight: bold;
+  margin: 12px 0;
+}
+
+.number {
+  color: var(--gold);
+  font-weight: bold;
+}
+
+.option {
+  display: block;
+  padding: 11px;
+  margin: 8px 0;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.option:hover { background: var(--green-light); }
+
+.option input {
+  margin-right: 9px;
+  accent-color: var(--green);
+}
+
+.figure {
+  margin: 18px 0;
+  padding: 12px;
+  background: #fbfcf8;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.figure svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.caption {
+  font-size: 13px;
+  color: #68776d;
+  margin-top: 8px;
+}
+
 .feedback {
-  display:none;
-  margin-top:12px;
-  padding:12px;
-  border-radius:9px;
-  background:#f0f6ef;
+  display: none;
+  margin-top: 12px;
+  padding: 12px;
+  background: var(--green-light);
+  border-left: 4px solid var(--green);
+  border-radius: 7px;
 }
-.feedback.good {display:block;color:#205b35}
-.feedback.bad {display:block;color:#9b4939;background:#fff2ef}
-.result {display:none;border-left:5px solid var(--gold)}
-.result strong {color:var(--green);font-size:24px}
-details {
-  margin-top:12px;
-  border:1px solid var(--border);
-  padding:12px;
-  border-radius:9px;
+
+.feedback.show { display: block; }
+
+.actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 25px;
 }
-summary {cursor:pointer;color:var(--green);font-weight:bold}
-.rubric {font-size:14px;color:#526457}
+
+.secondary {
+  background: #e5e9e5;
+  color: var(--green);
+}
+
+.result {
+  display: none;
+  padding: 20px;
+  margin-top: 20px;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.result.show { display: block; }
+
+.progress {
+  height: 8px;
+  background: #e1e8e1;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.progress span {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: var(--gold);
+}
+
 footer {
-  text-align:center;
-  color:var(--muted);
-  padding:25px;
-  font-size:13px;
+  text-align: center;
+  padding: 25px;
+  color: #758078;
 }
+
 @media(max-width:600px) {
-  .intro,.question,.essay,.result {padding:16px}
-  header {padding:28px 15px}
-  button {width:100%}
+  h1 { font-size: 27px; }
+  .question { padding: 15px; }
 }
 </style>
 </head>
@@ -142,477 +200,506 @@ footer {
 <body>
 
 <header>
-  <div class="brand">БИОЕГЭ С ЛЮБОВЬЮ</div>
-  <h1>Грибы и лишайники</h1>
-  <p>Тематический тренажёр ЕГЭ · 2027</p>
+  <div class="container">
+    <div class="logo">БИОЕГЭ С ЛЮБОВЬЮ</div>
+    <h1>Грибы и лишайники</h1>
+    <div class="subtitle">Банк заданий для подготовки к ЕГЭ-2027</div>
+  </div>
 </header>
 
 <main class="container">
 
-<section class="intro">
-  <h2>Проверь свои знания!</h2>
-  <p>
-    Тематическая практика по разделу «Система и многообразие
-    органического мира». Грибы, лишайники, особенности строения,
-    размножение, систематика и экологические связи.
-  </p>
-  <p><b>Часть 1:</b> задания с кратким ответом и автоматической проверкой.</p>
-  <p><b>Часть 2:</b> задания с развёрнутым ответом и критериями самопроверки.</p>
-  <p><b>Рекомендация:</b> сначала выполни задания самостоятельно,
-    затем проверь ответы и изучи пояснения.</p>
-</section>
+  <h2>Тренировочный тест</h2>
+  <p>Выберите тематический блок и выполните задания.</p>
 
-<h2 class="section-title">Часть 1. Задания с кратким ответом</h2>
+  <div class="progress">
+    <span id="progressBar"></span>
+  </div>
 
-<!-- ЗАДАНИЕ 9 -->
-<section class="question" data-question="1">
-  <span class="tag">Линия 9 · Задание с рисунком / объектом</span>
-  <h3>Задание 1</h3>
-  <p>
-    Рассмотрите описание организма: плодовое тело состоит из шляпки
-    и ножки, нижняя поверхность шляпки образована многочисленными
-    пластинками. Гифы грибницы имеют перегородки.
-  </p>
-  <p>К какой группе грибов относится описанный организм?</p>
-  <label class="option"><input type="radio" name="q1" value="1"> Зигомицеты</label>
-  <label class="option"><input type="radio" name="q1" value="2"> Базидиомицеты</label>
-  <label class="option"><input type="radio" name="q1" value="3"> Хитридиомицеты</label>
-  <label class="option"><input type="radio" name="q1" value="4"> Оомицеты</label>
-  <div class="feedback"></div>
-  <details>
-    <summary>Разбор задания</summary>
-    Пластинчатые шляпочные грибы, например шампиньоны и сыроежки,
-    относятся к базидиомицетам. На базидиях образуются базидиоспоры.
-  </details>
-</section>
+  <div class="tabs" id="tabs"></div>
 
-<!-- ЗАДАНИЕ 10 -->
-<section class="question" data-question="2">
-  <span class="tag">Линия 10 · Установление соответствия</span>
-  <h3>Задание 2</h3>
-  <p>
-    Установите соответствие между характеристиками и группами организмов.
-  </p>
-  <p><b>А.</b> Тело представлено мицелием.</p>
-  <p><b>Б.</b> Тело состоит из гриба и фотосинтезирующего партнёра.</p>
-  <p><b>В.</b> Клеточная стенка содержит хитин.</p>
-  <p><b>Г.</b> Фотосинтезирующий компонент может быть представлен цианобактерией.</p>
-  <p><b>Д.</b> Запасным углеводом часто является гликоген.</p>
-  <p><b>Е.</b> Образуют слоевище, не разделённое на органы.</p>
-  <p><b>1 — грибы; 2 — лишайники.</b></p>
-  <input type="text" id="q2" placeholder="Введите шесть цифр, например 112122">
-  <div class="feedback"></div>
-  <details>
-    <summary>Разбор задания</summary>
-    Лишайник — комплексный организм, включающий грибной компонент
-    и фотосинтезирующего партнёра. При этом собственная клеточная
-    стенка грибных гиф содержит хитин, а запасное вещество грибов —
-    преимущественно гликоген.
-  </details>
-</section>
+  <div id="questions"></div>
 
-<!-- ЗАДАНИЕ 11 -->
-<section class="question" data-question="3">
-  <span class="tag">Линия 11 · Множественный выбор</span>
-  <h3>Задание 3</h3>
-  <p>Выберите три верных утверждения о грибах.</p>
-  <label class="option"><input type="checkbox" name="q3" value="1"> Грибы являются эукариотами.</label>
-  <label class="option"><input type="checkbox" name="q3" value="2"> Все грибы способны к фотосинтезу.</label>
-  <label class="option"><input type="checkbox" name="q3" value="3"> Клеточная стенка многих грибов содержит хитин.</label>
-  <label class="option"><input type="checkbox" name="q3" value="4"> Основной запасной углевод грибов — гликоген.</label>
-  <label class="option"><input type="checkbox" name="q3" value="5"> Грибы относятся к автотрофным организмам.</label>
-  <label class="option"><input type="checkbox" name="q3" value="6"> Питательные вещества грибы поглощают всей поверхностью тела.</label>
-  <div class="feedback"></div>
-  <details>
-    <summary>Разбор задания</summary>
-    Грибы — эукариотические гетеротрофы. Для них характерны
-    хитинсодержащая клеточная стенка, запасание гликогена
-    и всасывательный тип питания.
-  </details>
-</section>
+  <div class="actions">
+    <button onclick="checkBlock()">Проверить блок</button>
+    <button class="secondary" onclick="resetBlock()">Сбросить ответы</button>
+  </div>
 
-<!-- ЗАДАНИЕ 12 -->
-<section class="question" data-question="4">
-  <span class="tag">Линия 12 · Систематика и последовательность</span>
-  <h3>Задание 4</h3>
-  <p>
-    Расположите систематические категории от наиболее крупной
-    к наиболее мелкой на примере шампиньона.
-  </p>
-  <p>
-    1) Вид<br>
-    2) Царство<br>
-    3) Род<br>
-    4) Отдел<br>
-    5) Класс<br>
-    6) Семейство
-  </p>
-  <input type="text" id="q4" placeholder="Введите последовательность цифр">
-  <div class="feedback"></div>
-  <details>
-    <summary>Разбор задания</summary>
-    Последовательность: царство → отдел → класс → семейство →
-    род → вид.
-  </details>
-</section>
-
-<!-- ЗАДАНИЕ 17 -->
-<section class="question" data-question="5">
-  <span class="tag">Линия 17 · Эволюционный контекст</span>
-  <h3>Задание 5</h3>
-  <p>
-    Прочитайте текст и выберите три верных утверждения.
-  </p>
-  <p>
-    Грибы обладают разнообразными способами питания и могут вступать
-    в симбиотические отношения с другими организмами. Некоторые грибы
-    образуют микоризу с корнями растений, другие входят в состав
-    лишайников.
-  </p>
-  <label class="option"><input type="checkbox" name="q5" value="1"> Микориза представляет собой взаимовыгодное взаимодействие гриба и корней растения.</label>
-  <label class="option"><input type="checkbox" name="q5" value="2"> Все грибы являются паразитами.</label>
-  <label class="option"><input type="checkbox" name="q5" value="3"> Гриб может получать от растения органические вещества.</label>
-  <label class="option"><input type="checkbox" name="q5" value="4"> Лишайник состоит только из грибных гиф.</label>
-  <label class="option"><input type="checkbox" name="q5" value="5"> Фотосинтезирующий партнёр лишайника синтезирует органические вещества.</label>
-  <label class="option"><input type="checkbox" name="q5" value="6"> Грибы не способны вступать в симбиотические отношения.</label>
-  <div class="feedback"></div>
-  <details>
-    <summary>Разбор задания</summary>
-    Микориза — симбиоз гриба и корней растения. Гриб получает
-    органические вещества, а растение может получать воду
-    и минеральные вещества благодаря грибнице. В лишайнике
-    фотосинтезирующий партнёр обеспечивает синтез органики.
-  </details>
-</section>
-
-<!-- ЗАДАНИЕ 18 -->
-<section class="question" data-question="6">
-  <span class="tag">Линия 18 · Экологические закономерности</span>
-  <h3>Задание 6</h3>
-  <p>
-    Выберите три верных утверждения о роли грибов в экосистемах.
-  </p>
-  <label class="option"><input type="checkbox" name="q6" value="1"> Многие грибы участвуют в разложении органических остатков.</label>
-  <label class="option"><input type="checkbox" name="q6" value="2"> Грибы обеспечивают возврат минеральных веществ в круговорот.</label>
-  <label class="option"><input type="checkbox" name="q6" value="3"> Все грибы являются продуцентами.</label>
-  <label class="option"><input type="checkbox" name="q6" value="4"> Грибы могут быть паразитами растений и животных.</label>
-  <label class="option"><input type="checkbox" name="q6" value="5"> Грибы не участвуют в пищевых цепях.</label>
-  <label class="option"><input type="checkbox" name="q6" value="6"> Грибы могут выступать консументами и редуцентами.</label>
-  <div class="feedback"></div>
-  <details>
-    <summary>Разбор задания</summary>
-    Сапротрофные грибы разлагают органические остатки и участвуют
-    в круговороте веществ. Грибы также могут быть паразитами
-    и входить в пищевые цепи.
-  </details>
-</section>
-
-<!-- ЗАДАНИЕ 19 -->
-<section class="question" data-question="7">
-  <span class="tag">Линия 19 · Соответствие / экология</span>
-  <h3>Задание 7</h3>
-  <p>
-    Установите соответствие между типами взаимоотношений и примерами.
-  </p>
-  <p><b>А.</b> Гриб получает органические вещества от живого растения и причиняет ему вред.</p>
-  <p><b>Б.</b> Гриб и водоросль образуют лишайник.</p>
-  <p><b>В.</b> Гриб разлагает опавшие листья.</p>
-  <p><b>Г.</b> Гриб образует микоризу с корнями дерева.</p>
-  <p><b>1 — паразитизм; 2 — симбиоз; 3 — сапротрофное питание.</b></p>
-  <input type="text" id="q7" placeholder="Введите четыре цифры">
-  <div class="feedback"></div>
-  <details>
-    <summary>Разбор задания</summary>
-    Паразитизм — получение ресурсов от хозяина с причинением ему вреда.
-    Лишайник и микориза — формы симбиотических отношений.
-    Разложение опада — сапротрофное питание.
-  </details>
-</section>
-
-<!-- ЗАДАНИЕ 21 -->
-<section class="question" data-question="8">
-  <span class="tag">Линия 21 · Анализ экспериментальных данных</span>
-  <h3>Задание 8</h3>
-  <p>
-    Исследователь определял влияние влажности субстрата на рост
-    мицелия одного вида плесневого гриба. Температуру и состав
-    питательной среды поддерживали постоянными.
-  </p>
-  <p><b>Получены результаты:</b></p>
-  <table style="width:100%;border-collapse:collapse;text-align:center">
-    <tr style="background:#edf5ed">
-      <th style="padding:10px;border:1px solid #dce7dc">Влажность, %</th>
-      <th style="padding:10px;border:1px solid #dce7dc">40</th>
-      <th style="padding:10px;border:1px solid #dce7dc">60</th>
-      <th style="padding:10px;border:1px solid #dce7dc">80</th>
-      <th style="padding:10px;border:1px solid #dce7dc">95</th>
-    </tr>
-    <tr>
-      <th style="padding:10px;border:1px solid #dce7dc">Рост мицелия, усл. ед.</th>
-      <td style="border:1px solid #dce7dc">2</td>
-      <td style="border:1px solid #dce7dc">5</td>
-      <td style="border:1px solid #dce7dc">8</td>
-      <td style="border:1px solid #dce7dc">6</td>
-    </tr>
-  </table>
-  <p>
-    На сколько условных единиц показатель роста при влажности 80%
-    превышает показатель при влажности 40%?
-  </p>
-  <input type="text" id="q8" placeholder="Введите число">
-  <div class="feedback"></div>
-  <details>
-    <summary>Разбор задания</summary>
-    8 − 2 = 6 условных единиц.
-  </details>
-</section>
-
-<div class="buttons">
-  <button class="primary" onclick="checkPartOne()">Проверить первую часть</button>
-  <button class="secondary" onclick="resetPartOne()">Сбросить ответы</button>
-</div>
-
-<section class="result" id="result">
-  <h2>Результат первой части</h2>
-  <strong id="score">0 из 8</strong>
-  <p id="message"></p>
-</section>
-
-<h2 class="section-title">Часть 2. Задания с развёрнутым ответом</h2>
-
-<!-- 22 -->
-<section class="essay">
-  <span class="tag">Линия 22 · Методология эксперимента</span>
-  <h3>Задание 9</h3>
-  <p>
-    Ученик предположил, что интенсивность роста плесневого гриба
-    зависит от температуры окружающей среды.
-  </p>
-  <p>Как следует поставить эксперимент для проверки этой гипотезы?</p>
-  <p>Укажите:</p>
-  <ol>
-    <li>Независимую переменную.</li>
-    <li>Зависимую переменную.</li>
-    <li>Два условия, которые необходимо поддерживать постоянными.</li>
-    <li>Почему необходимо использовать несколько повторностей.</li>
-  </ol>
-  <textarea placeholder="Запишите развёрнутый ответ..."></textarea>
-  <details>
-    <summary>Критерии самопроверки</summary>
-    <div class="rubric">
-      1. Независимая переменная — температура.
-      <br>2. Зависимая — интенсивность роста мицелия (например, прирост диаметра колонии).
-      <br>3. Постоянные условия: состав среды, влажность, вид и количество исходного материала, продолжительность опыта (достаточно двух).
-      <br>4. Повторности позволяют уменьшить влияние случайных отклонений и повысить надёжность результатов.
-    </div>
-  </details>
-</section>
-
-<!-- 23 -->
-<section class="essay">
-  <span class="tag">Линия 23 · Анализ результатов эксперимента</span>
-  <h3>Задание 10</h3>
-  <p>
-    В опыте сравнивали рост мицелия гриба на двух питательных средах.
-    На первой среде содержалась глюкоза, на второй — минеральные соли
-    без органического источника углерода. При одинаковых условиях
-    заметный рост наблюдался только на первой среде.
-  </p>
-  <p>Объясните результаты эксперимента. Сформулируйте вывод.</p>
-  <textarea placeholder="Запишите объяснение и вывод..."></textarea>
-  <details>
-    <summary>Критерии самопроверки</summary>
-    <div class="rubric">
-      1. Грибы являются гетеротрофами.
-      <br>2. Для роста им необходимы готовые органические вещества.
-      <br>3. Глюкоза служит источником углерода и энергии.
-      <br>4. Одних минеральных солей без органического источника углерода для роста данного гриба недостаточно.
-    </div>
-  </details>
-</section>
-
-<!-- 24 -->
-<section class="essay">
-  <span class="tag">Линия 24 · Работа с изображением биологического объекта</span>
-  <h3>Задание 11</h3>
-  <p>
-    На микрофотографии изображено слоевище лишайника.
-    Видны переплетающиеся грибные гифы и клетки фотосинтезирующего
-    партнёра, расположенные между ними.
-  </p>
-  <p>
-    Назовите два компонента лишайника. Объясните, какую роль
-    выполняет каждый из них. Укажите, почему лишайник нельзя
-    считать обычным растением.
-  </p>
-  <textarea placeholder="Запишите ответ..."></textarea>
-  <details>
-    <summary>Критерии самопроверки</summary>
-    <div class="rubric">
-      1. Грибной компонент — микобионт.
-      <br>2. Фотосинтезирующий компонент — фотобионт (зелёная водоросль и/или цианобактерия).
-      <br>3. Фотобионт синтезирует органические вещества в процессе фотосинтеза.
-      <br>4. Гриб обеспечивает защиту, удержание воды и минеральное питание; лишайник представляет собой симбиотическую систему, а не обычное растение.
-    </div>
-  </details>
-</section>
-
-<!-- 25 -->
-<section class="essay">
-  <span class="tag">Линия 25 · Многообразие организмов</span>
-  <h3>Задание 12</h3>
-  <p>
-    Сравните грибы и растения. Укажите три различия в строении
-    или особенностях жизнедеятельности.
-  </p>
-  <textarea placeholder="Запишите три различия..."></textarea>
-  <details>
-    <summary>Критерии самопроверки</summary>
-    <div class="rubric">
-      Возможные различия:
-      <br>1. Растения обычно имеют пластиды с фотосинтетическими пигментами, грибы их не имеют.
-      <br>2. Растения преимущественно автотрофы, грибы — гетеротрофы.
-      <br>3. Клеточная стенка растений содержит целлюлозу, грибов — преимущественно хитин и другие компоненты.
-      <br>4. Запасное вещество растений — крахмал, грибов — гликоген.
-      <br>5. Тело большинства грибов образовано мицелием, тело растений часто дифференцировано на органы и ткани.
-    </div>
-  </details>
-</section>
-
-<!-- 26 -->
-<section class="essay">
-  <span class="tag">Линия 26 · Общебиологические закономерности</span>
-  <h3>Задание 13</h3>
-  <p>
-    Лишайники способны заселять поверхности скал, на которых
-    практически отсутствует почва. Со временем на таких участках
-    могут появляться мхи, травянистые растения и другие организмы.
-  </p>
-  <p>
-    Объясните роль лишайников в первичной сукцессии.
-    Укажите два изменения среды, которые способствуют
-    последующему заселению территории другими организмами.
-  </p>
-  <textarea placeholder="Запишите развёрнутый ответ..."></textarea>
-  <details>
-    <summary>Критерии самопроверки</summary>
-    <div class="rubric">
-      1. Лишайники относятся к организмам-пионерам, способным заселять голые субстраты.
-      <br>2. Они участвуют в разрушении горных пород и накоплении органических остатков.
-      <br>3. Образуется первичный почвенный субстрат, увеличивается содержание органического вещества.
-      <br>4. Улучшается влагоудержание и формируются условия для поселения других организмов.
-    </div>
-  </details>
-</section>
-
-<div class="buttons">
-  <button class="primary" onclick="showAllCriteria()">Показать критерии второй части</button>
-  <button class="secondary" onclick="window.print()">Распечатать задания</button>
-</div>
-
-<section class="intro">
-  <h2>Работа завершена!</h2>
-  <p>
-    После выполнения проверь первую часть, а во второй части
-    сравни свои ответы с критериями. Обрати внимание не только
-    на правильность, но и на полноту биологических объяснений.
-  </p>
-  <p><b>БИОЕГЭ с Любовью</b> · Учимся понимать биологию!</p>
-</section>
+  <div class="result" id="result"></div>
 
 </main>
 
 <footer>
-  Авторский тематический тренажёр · БИОЕГЭ с Любовью
+  БиоЕГЭ с любовью · Биология · ЕГЭ-2027
 </footer>
 
 <script>
-const answers = {
-  q1: "2",
-  q2: "111222",
-  q3: ["1","3","4","6"],
-  q4: "245631",
-  q5: ["1","3","5"],
-  q6: ["1","2","4","6"],
-  q7: "1232",
-  q8: "6"
-};
 
-function normalize(value) {
-  return value.replace(/\s+/g,"").replace(/,/g,"").trim();
+/* ==================================
+   НАЗВАНИЯ ТЕМАТИЧЕСКИХ БЛОКОВ
+================================== */
+
+const blockNames = [
+  "Блок 1. Основы",
+  "Блок 2. Размножение",
+  "Блок 3. Строение грибов",
+  "Блок 4. Значение грибов",
+  "Блок 5. Лишайники",
+  "Блок 6. Экология",
+  "Блок 7. Анализ и эксперименты",
+  "Блок 8. Обобщение"
+];
+
+/* ==================================
+   БАНК ЗАДАНИЙ
+
+   Структура одного задания:
+
+   {
+     id: 1,
+     block: 1,
+     text: "Текст вопроса",
+     type: "single",
+     options: ["Ответ 1","Ответ 2"],
+     answer: ["A"],
+     explanation: "Пояснение",
+     figure: "mucor"
+   }
+
+   type:
+   single   — один ответ
+   multiple — несколько ответов
+   text     — текстовый ответ
+
+   figure:
+   mucor, smut, lichen
+================================== */
+
+const questions = [
+
+  /*
+  ЗАДАНИЯ ДОБАВЛЯЮТСЯ СЮДА.
+
+  Пример структуры:
+
+  {
+    id: 1,
+    block: 1,
+    text: "Какой тип питания характерен для большинства грибов?",
+    type: "single",
+    options: [
+      "Автотрофный",
+      "Гетеротрофный",
+      "Хемосинтетический",
+      "Фотоавтотрофный"
+    ],
+    answer: ["B"],
+    explanation: "Грибы являются гетеротрофными организмами."
+  }
+  */
+
+];
+
+/* ==================================
+   РИСУНОК 1. МУКОР
+================================== */
+
+function drawMucor() {
+return `
+<div class="figure">
+<svg viewBox="0 0 700 310" role="img"
+aria-label="Строение мукора">
+
+<rect width="700" height="310" rx="12" fill="#f7faf5"/>
+
+<!-- Мицелий -->
+<g stroke="#477b59" stroke-width="5"
+fill="none" stroke-linecap="round">
+  <path d="M50 245 Q110 205 160 235
+  T270 225 T380 240 T500 220 T650 240"/>
+  <path d="M180 230 Q190 180 230 160
+  Q260 145 300 160"/>
+  <path d="M390 235 Q400 180 400 95"/>
+  <path d="M400 95 Q370 75 350 65"/>
+  <path d="M400 95 Q425 70 450 65"/>
+</g>
+
+<!-- Спорангий -->
+<circle cx="400" cy="55" r="35"
+fill="#d7b76b" stroke="#8c6c30" stroke-width="3"/>
+
+<g fill="#8c6c30">
+  <circle cx="385" cy="42" r="4"/>
+  <circle cx="405" cy="30" r="4"/>
+  <circle cx="420" cy="50" r="4"/>
+  <circle cx="390" cy="65" r="4"/>
+  <circle cx="410" cy="72" r="4"/>
+  <circle cx="375" cy="58" r="4"/>
+</g>
+
+<!-- Подписи -->
+<g font-family="Arial" font-size="19" fill="#26352d">
+  <text x="485" y="35">Спорангий</text>
+  <text x="485" y="115">Спороносная ножка</text>
+  <text x="35" y="115">Гифы мицелия</text>
+  <text x="520" y="280">Мицелий</text>
+</g>
+
+<g stroke="#52685a" stroke-width="2" fill="none">
+  <path d="M460 40 L435 48"/>
+  <path d="M475 110 L405 120"/>
+  <path d="M145 120 L210 180"/>
+  <path d="M515 265 L550 240"/>
+</g>
+
+</svg>
+<div class="caption">
+Схема строения мукора. Мицелий образован разветвлёнными гифами;
+бесполое размножение происходит с помощью спор, формирующихся
+в спорангии.
+</div>
+</div>`;
 }
 
-function checkPartOne() {
-  let score = 0;
+/* ==================================
+   РИСУНОК 2. КУКУРУЗНАЯ ГОЛОВНЯ
+================================== */
 
-  document.querySelectorAll(".question").forEach((card,index) => {
-    const number = index + 1;
-    const key = "q" + number;
-    let userAnswer = "";
+function drawSmut() {
+return `
+<div class="figure">
+<svg viewBox="0 0 700 310" role="img"
+aria-label="Кукуруза, поражённая головнёй">
 
-    if (Array.isArray(answers[key])) {
-      userAnswer = Array.from(
-        card.querySelectorAll('input[type="checkbox"]:checked')
-      ).map(el => el.value).sort().join("");
-    } else if (card.querySelector('input[type="radio"]')) {
-      userAnswer = card.querySelector('input[type="radio"]:checked')?.value || "";
+<rect width="700" height="310" rx="12" fill="#f7faf5"/>
+
+<!-- Здоровый початок -->
+<path d="M110 245 Q65 140 135 65
+Q190 15 260 65 Q315 135 265 245Z"
+fill="#78a66b" stroke="#477b59" stroke-width="3"/>
+
+<path d="M155 240 Q125 145 165 75
+Q205 40 240 75 Q275 145 235 240Z"
+fill="#e0c36d" stroke="#a68b3e" stroke-width="3"/>
+
+<g fill="#f5df99" stroke="#b99b50">
+  <ellipse cx="180" cy="100" rx="12" ry="17"/>
+  <ellipse cx="215" cy="100" rx="12" ry="17"/>
+  <ellipse cx="175" cy="140" rx="12" ry="17"/>
+  <ellipse cx="210" cy="140" rx="12" ry="17"/>
+  <ellipse cx="175" cy="180" rx="12" ry="17"/>
+  <ellipse cx="210" cy="180" rx="12" ry="17"/>
+</g>
+
+<!-- Поражённый початок -->
+<path d="M390 245 Q345 150 405 75
+Q465 15 535 75 Q590 150 535 245Z"
+fill="#9a6250" stroke="#633c32" stroke-width="3"/>
+
+<path d="M410 220 Q390 150 435 95
+Q485 55 530 105 Q555 170 510 230Z"
+fill="#554039"/>
+
+<g fill="#302a27">
+  <circle cx="440" cy="125" r="5"/>
+  <circle cx="470" cy="105" r="5"/>
+  <circle cx="500" cy="130" r="5"/>
+  <circle cx="520" cy="165" r="5"/>
+  <circle cx="480" cy="190" r="5"/>
+  <circle cx="445" cy="175" r="5"/>
+</g>
+
+<g font-family="Arial" font-size="19" fill="#26352d">
+  <text x="105" y="285">Здоровый початок</text>
+  <text x="385" y="285">Поражённый початок</text>
+</g>
+
+</svg>
+<div class="caption">
+Схематическое сравнение здорового початка кукурузы
+и початка, поражённого грибом — возбудителем головни.
+</div>
+</div>`;
+}
+
+/* ==================================
+   РИСУНОК 3. СЛОЕВИЩЕ ЛИШАЙНИКА
+================================== */
+
+function drawLichen() {
+return `
+<div class="figure">
+<svg viewBox="0 0 700 350" role="img"
+aria-label="Поперечный срез слоевища лишайника">
+
+<rect width="700" height="350" rx="12" fill="#f7faf5"/>
+
+<!-- Верхняя кора -->
+<rect x="150" y="45" width="430" height="48"
+rx="8" fill="#b6a36a" stroke="#827343" stroke-width="2"/>
+
+<!-- Гонидиальный слой -->
+<rect x="150" y="93" width="430" height="65"
+fill="#e9e3c9"/>
+
+<g fill="#65985a">
+  <circle cx="185" cy="118" r="10"/>
+  <circle cx="235" cy="135" r="10"/>
+  <circle cx="290" cy="115" r="10"/>
+  <circle cx="350" cy="137" r="10"/>
+  <circle cx="410" cy="115" r="10"/>
+  <circle cx="470" cy="135" r="10"/>
+  <circle cx="535" cy="115" r="10"/>
+</g>
+
+<!-- Сердцевина -->
+<rect x="150" y="158" width="430" height="105"
+fill="#f0eddf"/>
+
+<g fill="none" stroke="#9a8960" stroke-width="3">
+  <path d="M165 185 Q210 165 250 205
+  T340 185 T430 210 T520 180"/>
+  <path d="M165 235 Q220 210 270 240
+  T370 225 T470 245 T560 220"/>
+</g>
+
+<!-- Нижняя кора -->
+<rect x="150" y="263" width="430" height="38"
+fill="#c9b98b" stroke="#827343" stroke-width="2"/>
+
+<!-- Подписи -->
+<g font-family="Arial" font-size="18" fill="#26352d">
+  <text x="20" y="75">Верхняя кора</text>
+  <text x="20" y="125">Гонидиальный слой</text>
+  <text x="20" y="210">Сердцевина</text>
+  <text x="20" y="288">Нижняя кора</text>
+</g>
+
+<g stroke="#52685a" stroke-width="2">
+  <path d="M130 70 L150 70"/>
+  <path d="M130 120 L150 120"/>
+  <path d="M130 205 L150 205"/>
+  <path d="M130 280 L150 280"/>
+</g>
+
+<text x="365" y="330" text-anchor="middle"
+font-family="Arial" font-size="15" fill="#68776d">
+Поперечный срез гетеромерного слоевища
+</text>
+
+</svg>
+<div class="caption">
+Схема гетеромерного слоевища лишайника.
+Зелёные клетки в гонидиальном слое — клетки фотобионта.
+</div>
+</div>`;
+}
+
+/* ==================================
+   ВСТАВКА РИСУНКОВ
+================================== */
+
+function getFigure(name) {
+  if (name === "mucor") return drawMucor();
+  if (name === "smut") return drawSmut();
+  if (name === "lichen") return drawLichen();
+  return "";
+}
+
+/* ==================================
+   ИНТЕРФЕЙС БЛОКОВ
+================================== */
+
+let currentBlock = 1;
+const userAnswers = {};
+
+function renderTabs() {
+  const tabs = document.getElementById("tabs");
+  tabs.innerHTML = "";
+
+  blockNames.forEach((name, index) => {
+    const button = document.createElement("button");
+    button.className = "tab" +
+      (currentBlock === index + 1 ? " active" : "");
+
+    button.textContent = name;
+    button.onclick = () => {
+      currentBlock = index + 1;
+      renderTabs();
+      renderQuestions();
+    };
+
+    tabs.appendChild(button);
+  });
+}
+
+/* ==================================
+   ОТОБРАЖЕНИЕ ЗАДАНИЙ
+================================== */
+
+function renderQuestions() {
+  const root = document.getElementById("questions");
+  const list = questions.filter(q => q.block === currentBlock);
+
+  document.getElementById("result").classList.remove("show");
+
+  if (list.length === 0) {
+    root.innerHTML = `
+      <div class="question">
+        <h3>${blockNames[currentBlock - 1]}</h3>
+        <p>Задания этого блока будут добавлены из авторского банка.</p>
+        <p>Всего в проекте предусмотрено 81 задание.</p>
+      </div>`;
+    return;
+  }
+
+  root.innerHTML = "";
+
+  list.forEach(q => {
+    const card = document.createElement("div");
+    card.className = "question";
+
+    const inputType =
+      q.type === "multiple" ? "checkbox" : "radio";
+
+    let controls = "";
+
+    if (q.type === "text") {
+      controls = `
+        <textarea
+          data-q="${q.id}"
+          rows="4"
+          style="width:100%;padding:10px;border:1px solid #dce5dc;border-radius:8px"
+          placeholder="Введите ответ"></textarea>`;
     } else {
-      userAnswer = normalize(card.querySelector('input[type="text"]').value);
+      controls = q.options.map((option, index) => {
+        const letter = String.fromCharCode(65 + index);
+
+        return `
+          <label class="option">
+            <input
+              type="${inputType}"
+              name="q${q.id}"
+              value="${letter}"
+              data-q="${q.id}">
+            <strong>${letter}.</strong> ${option}
+          </label>`;
+      }).join("");
     }
 
-    let correct = Array.isArray(answers[key])
-      ? userAnswer === answers[key].slice().sort().join("")
-      : userAnswer === answers[key];
+    card.innerHTML = `
+      <div class="number">Задание № ${q.id}</div>
+      <div class="question-title">${q.text}</div>
+      ${q.figure ? getFigure(q.figure) : ""}
+      ${controls}
+      <div class="feedback" id="feedback-${q.id}"></div>
+    `;
 
-    const feedback = card.querySelector(".feedback");
-    feedback.className = "feedback " + (correct ? "good" : "bad");
-    feedback.style.display = "block";
+    root.appendChild(card);
+  });
 
-    if (correct) {
-      score++;
-      feedback.textContent = "Верно! Отличная работа.";
-    } else {
-      feedback.textContent = "Пока неверно. Попробуй разобраться с помощью разбора задания ниже.";
+  root.querySelectorAll("input, textarea").forEach(input => {
+    input.addEventListener("change", saveAnswer);
+  });
+}
+
+/* ==================================
+   СОХРАНЕНИЕ ОТВЕТОВ
+================================== */
+
+function saveAnswer(event) {
+  const id = event.target.dataset.q;
+  if (!id) return;
+
+  if (event.target.type === "checkbox") {
+    userAnswers[id] = [
+      ...document.querySelectorAll(
+        `input[data-q="${id}"]:checked`
+      )
+    ].map(input => input.value);
+
+  } else {
+    userAnswers[id] = event.target.value;
+  }
+}
+
+/* ==================================
+   ПРОВЕРКА БЛОКА
+================================== */
+
+function checkBlock() {
+  const list = questions.filter(q => q.block === currentBlock);
+
+  if (!list.length) {
+    alert("В этом блоке пока нет добавленных заданий.");
+    return;
+  }
+
+  let correct = 0;
+  let checked = 0;
+  let manual = 0;
+
+  list.forEach(q => {
+    const feedback = document.getElementById(
+      `feedback-${q.id}`
+    );
+
+    if (!feedback) return;
+
+    feedback.classList.add("show");
+
+    if (q.type === "text") {
+      manual++;
+      feedback.textContent =
+        "Развёрнутый ответ требует проверки преподавателем.";
+      return;
     }
+
+    const selected = userAnswers[q.id] || [];
+    const expected = q.answer || [];
+
+    const selectedArray = Array.isArray(selected)
+      ? selected
+      : [selected];
+
+    const isCorrect =
+      selectedArray.length === expected.length &&
+      selectedArray.every(value => expected.includes(value));
+
+    checked++;
+
+    if (isCorrect) correct++;
+
+    feedback.textContent =
+      (isCorrect ? "Верно! " : "Ответ неверный. ") +
+      (q.explanation || "");
   });
 
   const result = document.getElementById("result");
-  result.style.display = "block";
-  document.getElementById("score").textContent = score + " из 8";
+  result.classList.add("show");
 
-  let message = "";
-  if (score === 8) message = "Прекрасный результат! Все задания выполнены верно.";
-  else if (score >= 6) message = "Хороший результат. Разбери задания, в которых допущены ошибки.";
-  else if (score >= 4) message = "Есть хорошая основа, но отдельные вопросы требуют повторения.";
-  else message = "Рекомендуем повторить тему и выполнить задания ещё раз.";
-
-  document.getElementById("message").textContent = message;
-  result.scrollIntoView({behavior:"smooth",block:"center"});
+  result.innerHTML = `
+    <h3>Результат выполнения блока</h3>
+    <p><strong>${correct} из ${checked}</strong> заданий выполнено верно.</p>
+    ${manual ? `<p>${manual} заданий требуют ручной проверки.</p>` : ""}
+  `;
 }
 
-function resetPartOne() {
-  document.querySelectorAll(".question input").forEach(input => {
-    if (input.type === "radio" || input.type === "checkbox") {
-      input.checked = false;
-    } else {
-      input.value = "";
-    }
-  });
+/* ==================================
+   СБРОС ОТВЕТОВ
+================================== */
 
-  document.querySelectorAll(".feedback").forEach(feedback => {
-    feedback.style.display = "none";
-    feedback.textContent = "";
-  });
+function resetBlock() {
+  questions
+    .filter(q => q.block === currentBlock)
+    .forEach(q => delete userAnswers[q.id]);
 
-  document.getElementById("result").style.display = "none";
+  renderQuestions();
 }
 
-function showAllCriteria() {
-  document.querySelectorAll(".essay details").forEach(item => {
-    item.open = true;
-  });
-}
+renderTabs();
+renderQuestions();
+
 </script>
-
 </body>
 </html>
