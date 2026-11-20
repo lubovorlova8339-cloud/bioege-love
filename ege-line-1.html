@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Линия 1 — БИОЕГЭ с Любовью</title>
+<style>
+:root {
+  --green:#315c43;
+  --green-dark:#234631;
+  --green-light:#eaf1e9;
+  --gold:#c5a45b;
+  --cream:#faf8f1;
+  --white:#fff;
+  --text:#29352d;
+  --muted:#718075;
+  --border:#e4e9df;
+  --red:#a94442;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:var(--cream);
+  color:var(--text);
+  font-family:Arial,Helvetica,sans-serif;
+  line-height:1.6;
+}
+header{
+  background:var(--green);
+  color:white;
+  padding:27px 18px 24px;
+  text-align:center;
+  border-bottom:4px solid var(--gold);
+}
+.brand{
+  font-size:14px;
+  letter-spacing:2px;
+  color:#e8dfc6;
+  margin-bottom:8px;
+}
+header h1{margin:0;font-size:clamp(24px,4vw,34px)}
+header p{margin:8px 0 0;color:#e8eee8}
+.container{max-width:1050px;margin:0 auto;padding:22px 16px 50px}
+.top-actions{
+  display:flex;gap:10px;flex-wrap:wrap;
+  justify-content:space-between;align-items:center;margin-bottom:18px
+}
+button,.back-link{
+  border:0;border-radius:9px;padding:11px 17px;
+  font-size:14px;font-weight:600;cursor:pointer;
+  transition:.2s;text-decoration:none;display:inline-block
+}
+.back-link{background:var(--green);color:white}
+.back-link:hover{background:var(--green-dark)}
+.secondary{background:#fff;border:1px solid var(--border);color:var(--green)}
+.secondary:hover{background:var(--green-light)}
+.progress-box{
+  background:white;border:1px solid var(--border);
+  border-radius:14px;padding:16px 18px;margin-bottom:22px
+}
+.progress-top{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.progress-track{height:10px;background:#edf0e9;border-radius:20px;overflow:hidden;margin-top:11px}
+.progress-fill{height:100%;width:0;background:var(--gold);transition:width .25s}
+.stats{font-size:14px;color:var(--muted)}
+.section{
+  background:white;border:1px solid var(--border);
+  border-radius:15px;margin:22px 0;overflow:hidden
+}
+.section-heading{
+  background:var(--green-light);padding:17px 20px;
+  border-left:5px solid var(--gold)
+}
+.section-heading h2{margin:0;color:var(--green);font-size:20px}
+.section-heading p{margin:4px 0 0;color:var(--muted);font-size:13px}
+.question{
+  padding:20px;border-top:1px solid var(--border)
+}
+.question:first-of-type{border-top:0}
+.q-top{display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}
+.q-number{font-weight:700;color:var(--green);font-size:17px}
+.q-year{font-size:12px;color:var(--muted);background:#f4f5f0;padding:4px 9px;border-radius:20px}
+.q-text{margin:12px 0;font-size:15px}
+.table-like{
+  border:1px solid var(--border);border-radius:9px;
+  overflow:hidden;margin:12px 0;background:#fff
+}
+.table-row{display:grid;grid-template-columns:1fr 1.5fr}
+.table-row span{padding:9px 11px;border-bottom:1px solid var(--border)}
+.table-row span:first-child{font-weight:600;background:#f7f8f4}
+.table-row:last-child span{border-bottom:0}
+.image-note{
+  padding:11px 13px;background:#fff9e9;border:1px dashed var(--gold);
+  color:#705b2b;border-radius:8px;font-size:13px;margin:12px 0
+}
+.answer-line{display:flex;gap:9px;flex-wrap:wrap;margin-top:13px}
+.answer-input{
+  flex:1;min-width:190px;padding:12px 13px;border:1px solid #cfd8cc;
+  border-radius:8px;font-size:15px;outline:none
+}
+.answer-input:focus{border-color:var(--green);box-shadow:0 0 0 2px #315c4318}
+.check-btn{background:var(--green);color:white}
+.check-btn:hover{background:var(--green-dark)}
+.show-btn{background:#f4eddb;color:#705b2b;border:1px solid #e5d8b8}
+.feedback{margin-top:11px;font-size:14px;font-weight:600;min-height:22px}
+.feedback.correct{color:var(--green)}
+.feedback.wrong{color:var(--red)}
+.answer-reveal{
+  display:none;background:var(--green-light);border-radius:8px;
+  padding:11px 13px;margin-top:9px;font-size:14px
+}
+.answer-reveal strong{color:var(--green)}
+.done-label{font-size:12px;color:var(--green);font-weight:600}
+.footer{text-align:center;color:var(--muted);font-size:13px;padding:25px 10px}
+@media(max-width:600px){
+  .container{padding:15px 10px 35px}
+  .question{padding:15px}
+  .table-row{grid-template-columns:1fr}
+  .table-row span:first-child{border-bottom:0}
+  .answer-input{min-width:100%}
+  .answer-line button{flex:1}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">БИОЕГЭ С ЛЮБОВЬЮ</div>
+  <h1>Линия 1. Биология как наука</h1>
+  <p>Тематический тренажёр ЕГЭ по биологии</p>
+</header>
+
+<main class="container">
+  <div class="top-actions">
+    <a class="back-link" href="./bank-ege.html">← Назад в банк ЕГЭ</a>
+    <button class="secondary" onclick="resetProgress()">Сбросить прогресс</button>
+  </div>
+
+  <div class="progress-box">
+    <div class="progress-top">
+      <strong>Мой результат</strong>
+      <span class="stats" id="stats">Решено: 0 из 70 · Верно: 0</span>
+    </div>
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+  </div>
+
+  <div id="tasks"></div>
+
+  <div class="footer">
+    БИОЕГЭ с Любовью · Подготовка к ЕГЭ по биологии
+  </div>
+</main>
+
+<script>
+const sections = [
+{
+ title:"1. Биологические науки",
+ subtitle:"Задания 1–19 · Разделы и направления биологии",
+ tasks:[
+  [1,"2025","Какая биологическая наука изучает процесс образования мочи у животного? В таблице также указан гликолиз как предмет изучения биохимии.","физиология"],
+  [2,"2025","Какая биологическая наука изучает регуляцию работы мочевыводящей системы? В таблице также указан синтез гликогена как предмет биохимии.","физиология; нефрология"],
+  [3,"2025","Какая наука изучает распределение организмов по таксономическим категориям?","систематика"],
+  [4,"2025 (О), 2023 (О)","Какой раздел биологии занимается выведением новых высокоурожайных сортов культурных растений?","селекция"],
+  [5,"2025","Какой раздел биологии изучает влияние факторов окружающей среды на численность белки обыкновенной?","экология"],
+  [6,"2024 (О), 2020 (О)","Какая наука изучает историческое и эволюционное становление человека разумного как вида?","антропология; антропогенез"],
+  [7,"2024 (Д)","Рассмотрите таблицу «Биология — комплексная наука». По иллюстрации определите биологическую науку.","экология",true],
+  [8,"2024 (Д)","Рассмотрите таблицу «Биология — комплексная наука». По иллюстрации определите биологическую науку.","экология",true],
+  [9,"2023 (О)","Какой раздел биологии изучает строение органов, систем органов и организма человека?","анатомия"],
+  [10,"2023 (О)","Как называется направление биологии, изучающее использование организмов в промышленном производстве продуктов питания и лекарств?","биотехнология"],
+  [11,"2023 (О)","Рассмотрите иллюстрацию объекта изучения. Определите науку. В исходном задании приведена таблица с эмбриологией и изображением.","селекция; генетика",true],
+  [12,"2023 (О)","Рассмотрите иллюстрацию объекта изучения. Определите науку. В исходном задании приведена таблица с физиологией и изображением.","генетика",true],
+  [13,"2023 (Д)","Рассмотрите иллюстрацию объекта изучения. Определите науку, указанную в пропущенной строке таблицы.","эмбриология",true],
+  [14,"2022 (Д)","Какая область биологии занимается пересадкой генов в ДНК бактерий?","генная инженерия; биотехнология"],
+  [15,"2020","Какая наука изучает жизнедеятельность органов и систем органов организма?","физиология"],
+  [16,"2020","Как называется наука о млекопитающих?","териология"],
+  [17,"2020","Какая наука изучает закономерности наследственности и изменчивости?","генетика"],
+  [18,"Пробник ФИПИ, 2024","Рассмотрите иллюстрацию объекта изучения. Определите раздел биологии, указанный в пропущенной строке таблицы.","палеонтология",true],
+  [19,"Пробник ФИПИ, 2024","Рассмотрите иллюстрацию объекта изучения. Определите раздел биологии, указанный в пропущенной строке таблицы.","эмбриология",true]
+ ]
+},
+{
+ title:"2. Методы биологических исследований",
+ subtitle:"Задания 20–39 · Общенаучные и частнонаучные методы",
+ tasks:[
+  [20,"2025","Какой метод биологических исследований используется в примере, приведённом в исходной таблице? Вторая строка таблицы содержит иллюстрацию метода.","эксперимент"],
+  [21,"2025","Как называется метод скрещивания чистых линий организмов с альтернативными признаками для анализа потомства?","гибридизация; гибридологический"],
+  [22,"2025","Как называется метод изучения клеток крови под увеличительным прибором?","микроскопия; микроскопирование"],
+  [23,"2025","Какой научный метод представлен во второй строке исходной таблицы?","наблюдение"],
+  [24,"2025","Как называется метод, представленный во второй строке таблицы «Методы биологических исследований»?","микроскопия; микроскопирование"],
+  [25,"2024 (Д, О), 2022 (О)","Как называется метод определения последовательности нуклеотидов ДНК с помощью флуоресцентных меток?","секвенирование"],
+  [26,"2024 (Д)","Рассмотрите иллюстрацию метода. Определите метод биологических исследований.","эксперимент",true],
+  [27,"2024 (О)","Как называется метод выведения чистых линий?","инбридинг; близкородственное скрещивание"],
+  [28,"2024 (О)","Как называется метод разделения органоидов клетки по массе?","центрифугирование"],
+  [29,"2024 (О), 2022 (Р)","Рассмотрите иллюстрацию метода. Определите частнонаучный метод.","микроскопия; микроскопирование",true],
+  [30,"Пробник ФИПИ, 2024","Рассмотрите иллюстрацию метода. Определите частнонаучный метод.","центрифугирование",true],
+  [31,"2023 (О)","Как называется метод определения характера наследования дальтонизма у человека в ряду поколений?","генеалогический"],
+  [32,"2023 (Д)","Рассмотрите иллюстрацию метода. Определите метод биологических исследований.","генная инженерия; биотехнология",true],
+  [33,"2023 (Д)","Рассмотрите иллюстрацию метода изучения эволюции. Определите метод.","генетический; цитогенетический",true],
+  [34,"2023 (О)","Как называется метод получения эмбрионов, генетически идентичных материнскому организму?","клонирование"],
+  [35,"2023 (О)","Рассмотрите иллюстрацию метода. Определите частнонаучный метод.","гибридизация; гибридологический",true],
+  [36,"2022 (О)","Какой метод позволяет обнаружить кратно увеличенный набор хромосом?","цитогенетический; микроскопия; кариотипирование"],
+  [37,"2022 (Р)","Рассмотрите иллюстрацию метода. Определите частнонаучный метод.","хроматография",true],
+  [38,"2022 (Р)","Рассмотрите иллюстрацию метода. Определите частнонаучный метод.","цитогенетический; кариотипирование",true],
+  [39,"2022 (Р)","Рассмотрите иллюстрацию метода. Определите частнонаучный метод.","клонирование",true]
+ ]
+},
+{
+ title:"3. Признаки живых систем",
+ subtitle:"Задания 40–55 · Основные свойства и проявления жизни",
+ tasks:[
+  [40,"2025, 2023 (О)","Какой признак живых систем соответствует примеру, приведённому в пропущенной строке исходной таблицы?","размножение; воспроизведение"],
+  [41,"2025","Как называется признак живых систем, иллюстрируемый чередованием активности и спячки у ежа обыкновенного?","ритмичность"],
+  [42,"2025","Какой признак живых систем иллюстрирует появление ягод у крыжовника?","развитие"],
+  [43,"2025","Какой признак живых систем иллюстрирует фотосинтез в листьях растения?","метаболизм; обмен веществ"],
+  [44,"2025","Какой признак живых систем иллюстрирует влияние парасимпатической нервной системы на просвет бронхов у человека?","саморегуляция"],
+  [45,"2025","Какой признак живых систем иллюстрирует влияние парасимпатической нервной системы на диаметр кровеносных сосудов?","саморегуляция"],
+  [46,"2025","Какой признак живых систем иллюстрирует наличие веретеновидных клеток в гладкой мышечной ткани?","клеточное строение; иерархичность; дискретность"],
+  [47,"2024 (О)","Рассмотрите иллюстрацию признака живых систем и определите признак, указанный в пропущенной строке таблицы.","рост и развитие; развитие; рост",true],
+  [48,"2024 (О)","Какой признак живых систем иллюстрирует появление рогов у взрослого самца оленя?","развитие; изменчивость; рост"],
+  [49,"2024 (О), 2022 (О)","Как называется признак живых систем, представляющий собой совокупность реакций синтеза и расщепления органических веществ в организме?","обмен веществ; метаболизм"],
+  [50,"2024 (О)","Какой признак живых систем иллюстрирует расширение кровеносных сосудов кожи при повышении температуры окружающей среды?","саморегуляция"],
+  [51,"2024 (О)","Как называется признак живых систем, иллюстрируемый сезонной сменой периодов активности и спячки у медведя?","ритмичность"],
+  [52,"2023 (О)","Рассмотрите иллюстрацию признака живых систем и определите признак, указанный в пропущенной строке таблицы.","развитие",true],
+  [53,"2023 (О)","Рассмотрите иллюстрацию признака живых систем и определите признак, указанный в пропущенной строке таблицы.","размножение",true],
+  [54,"2023 (Р)","Как называется признак живых систем, иллюстрируемый сворачиванием листа росянки при попадании на него комара?","раздражимость"],
+  [55,"2023 (Д), ФИПИ","Рассмотрите иллюстрацию признака живых систем и определите признак, указанный в пропущенной строке таблицы.","наследственность; изменчивость",true]
+ ]
+},
+{
+ title:"4. Уровни организации живой природы",
+ subtitle:"Задания 56–70 · Уровни организации и их примеры",
+ tasks:[
+  [56,"2025","Какой уровень организации живой природы иллюстрирует воспроизведение биомассы живого вещества в лесу?","экосистемный"],
+  [57,"2025","Какой уровень организации живой природы иллюстрируют генотип и фенотип особи императорского пингвина?","организменный"],
+  [58,"2025","Какой уровень организации живой природы иллюстрирует синтез тубулина для создания центриолей?","молекулярный; клеточный"],
+  [59,"2025","Какой уровень организации живой природы иллюстрирует совокупность хромосом и генов рыжего лесного муравья?","организменный"],
+  [60,"2024 (О)","Рассмотрите иллюстрацию уровня организации живой природы. Определите уровень, указанный в пропущенной строке таблицы.","молекулярный",true],
+  [61,"2024 (О)","Рассмотрите иллюстрацию уровня организации живой природы. Определите уровень, указанный в пропущенной строке таблицы.","популяционный; популяционно-видовой",true],
+  [62,"2024 (О)","Рассмотрите иллюстрацию уровня организации живой природы. Определите уровень, указанный в пропущенной строке таблицы.","организменный",true],
+  [63,"2024 (О)","Рассмотрите иллюстрацию уровня организации живой природы. Определите уровень, указанный в пропущенной строке таблицы.","экосистемный",true],
+  [64,"2023 (О)","Какой уровень организации живых систем иллюстрирует поддержание постоянства газового состава атмосферы живым веществом Земли?","биосферный"],
+  [65,"2023 (О)","Какой уровень организации живых систем иллюстрирует подготовительный этап энергетического обмена в пищеварительном тракте?","организменный"],
+  [66,"2023 (О)","Какой уровень организации живых систем иллюстрирует совокупность всех особей жужелиц в лесу?","популяционный; популяционно-видовой"],
+  [67,"2023 (Р)","Рассмотрите иллюстрацию уровня организации живой природы. Определите уровень, указанный в пропущенной строке таблицы.","молекулярный",true],
+  [68,"2023 (Р)","Какой уровень организации живого иллюстрирует глобальная экосистема?","биосферный"],
+  [69,"2022 (О)","Какой уровень организации живой природы иллюстрирует превращение хлоропластов в хромопласты?","клеточный; субклеточный; органоидно-клеточный"],
+  [70,"2020","Какой уровень организации живой природы иллюстрируют взаимоотношения гриба и водоросли в лишайнике?","организменный"]
+ ]
+}
+];
+
+const storageKey = "bioege_line1_progress_v1";
+let progress = {};
+try { progress = JSON.parse(localStorage.getItem(storageKey) || "{}"); }
+catch(e) { progress = {}; }
+
+function normalize(value){
+ return String(value || "")
+  .toLowerCase()
+  .replaceAll("ё","е")
+  .replace(/[.,!?;:()[\]«»"'`]/g," ")
+  .replace(/\s+/g," ")
+  .trim();
+}
+
+function acceptedAnswers(answerText){
+ return answerText.split(";").map(x=>normalize(x)).filter(Boolean);
+}
+
+function isCorrect(userAnswer, answerText){
+ const user = normalize(userAnswer);
+ if(!user) return false;
+ return acceptedAnswers(answerText).some(answer => user === answer);
+}
+
+function render(){
+ const root = document.getElementById("tasks");
+ root.innerHTML = "";
+ let globalIndex = 0;
+
+ sections.forEach((section, sectionIndex)=>{
+  const sectionEl = document.createElement("section");
+  sectionEl.className = "section";
+
+  const heading = document.createElement("div");
+  heading.className = "section-heading";
+  heading.innerHTML = `<h2>${section.title}</h2><p>${section.subtitle}</p>`;
+  sectionEl.appendChild(heading);
+
+  section.tasks.forEach(task=>{
+   globalIndex++;
+   const [number,year,question,answer,needsImage] = task;
+   const saved = progress[number] || {};
+   const article = document.createElement("article");
+   article.className = "question";
+   article.id = "task-" + number;
+
+   article.innerHTML = `
+    <div class="q-top">
+      <span class="q-number">Задание ${number}</span>
+      <span class="q-year">${year}</span>
+      ${saved.correct ? '<span class="done-label">✓ Верно</span>' : ''}
+    </div>
+    <div class="q-text">${question}</div>
+    ${needsImage ? '<div class="image-note">В исходном задании предусмотрена иллюстрация. Её необходимо добавить из оригинального источника перед публикацией задания ученикам.</div>' : ''}
+    <div class="answer-line">
+      <input class="answer-input" id="input-${number}" type="text"
+        placeholder="Введите краткий ответ"
+        value="${escapeAttr(saved.value || "")}"
+        autocomplete="off">
+      <button class="check-btn" onclick="checkAnswer(${number})">Проверить</button>
+      <button class="show-btn" onclick="showAnswer(${number})">Показать ответ</button>
+    </div>
+    <div class="feedback ${saved.correct ? 'correct' : ''}" id="feedback-${number}">
+      ${saved.correct ? 'Верно! Ответ засчитан.' : ''}
+    </div>
+    <div class="answer-reveal" id="reveal-${number}">
+      <strong>Ответ:</strong> ${answer.replaceAll("; ", " / ")}
+    </div>
+   `;
+   sectionEl.appendChild(article);
+  });
+
+  root.appendChild(sectionEl);
+ });
+
+ updateStats();
+}
+
+function escapeAttr(value){
+ return String(value).replaceAll("&","&amp;").replaceAll('"',"&quot;")
+  .replaceAll("<","&lt;").replaceAll(">","&gt;");
+}
+
+function findTask(number){
+ for(const section of sections){
+  const task = section.tasks.find(item=>item[0]===number);
+  if(task) return task;
+ }
+ return null;
+}
+
+function checkAnswer(number){
+ const task = findTask(number);
+ if(!task) return;
+ const input = document.getElementById("input-"+number);
+ const feedback = document.getElementById("feedback-"+number);
+ const userAnswer = input.value;
+ const correct = isCorrect(userAnswer,task[3]);
+
+ progress[number] = {
+  value:userAnswer,
+  correct:correct,
+  attempted:true
+ };
+ saveProgress();
+
+ if(correct){
+  feedback.className = "feedback correct";
+  feedback.textContent = "Верно! Ответ засчитан.";
+ } else {
+  feedback.className = "feedback wrong";
+  feedback.textContent = userAnswer.trim()
+   ? "Пока неверно. Попробуйте ещё раз или откройте правильный ответ."
+   : "Сначала введите свой ответ.";
+ }
+ updateStats();
+}
+
+function showAnswer(number){
+ const task = findTask(number);
+ if(!task) return;
+ const reveal = document.getElementById("reveal-"+number);
+ reveal.style.display = reveal.style.display === "block" ? "none" : "block";
+}
+
+function saveProgress(){
+ try { localStorage.setItem(storageKey,JSON.stringify(progress)); }
+ catch(e) {}
+}
+
+function updateStats(){
+ let solved = 0;
+ let correct = 0;
+ for(const key in progress){
+  if(progress[key].attempted) solved++;
+  if(progress[key].correct) correct++;
+ }
+ document.getElementById("stats").textContent =
+  `Решено: ${solved} из 70 · Верно: ${correct}`;
+ document.getElementById("progressFill").style.width =
+  (correct/70*100)+"%";
+}
+
+function resetProgress(){
+ if(!confirm("Сбросить все сохранённые ответы и результаты?")) return;
+ progress = {};
+ saveProgress();
+ render();
+}
+
+render();
+</script>
+</body>
+</html>
