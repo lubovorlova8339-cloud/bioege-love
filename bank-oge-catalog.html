@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Банк заданий ОГЭ | БИОЕГЭ с Любовью</title>
+
+<style>
+:root {
+  --green: #315f45;
+  --green-dark: #244936;
+  --green-light: #eaf2eb;
+  --gold: #c5a45b;
+  --cream: #fbfaf5;
+  --text: #303b33;
+  --muted: #788078;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: var(--cream);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+header {
+  background: white;
+  border-bottom: 1px solid #e8e8df;
+  padding: 18px 20px;
+}
+
+.header-inner {
+  max-width: 1100px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.logo {
+  color: var(--green);
+  font-size: 19px;
+  font-weight: bold;
+}
+
+.back-link {
+  color: var(--green);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.back-link:hover {
+  color: var(--gold);
+}
+
+main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 45px 20px 65px;
+}
+
+.intro {
+  text-align: center;
+  margin-bottom: 38px;
+}
+
+.eyebrow {
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+h1 {
+  color: var(--green-dark);
+  font-size: clamp(28px, 5vw, 42px);
+  line-height: 1.2;
+  margin: 12px 0;
+}
+
+.intro p {
+  max-width: 650px;
+  margin: 0 auto;
+  color: var(--muted);
+  font-size: 16px;
+}
+
+.section-title {
+  color: var(--green-dark);
+  font-size: 23px;
+  margin: 35px 0 18px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 18px;
+}
+
+.card {
+  background: white;
+  border: 1px solid #e8e9df;
+  border-radius: 15px;
+  padding: 23px;
+  min-height: 190px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 5px 18px rgba(39, 65, 47, 0.045);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card.active:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 9px 24px rgba(39, 65, 47, 0.1);
+}
+
+.card-icon {
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+.card h3 {
+  color: var(--green);
+  font-size: 18px;
+  margin: 0 0 8px;
+}
+
+.card p {
+  color: var(--muted);
+  font-size: 14px;
+  margin: 0 0 18px;
+}
+
+.card-link {
+  margin-top: auto;
+  display: inline-block;
+  width: fit-content;
+  color: white;
+  background: var(--green);
+  padding: 9px 17px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.card-link:hover {
+  background: var(--green-dark);
+}
+
+.coming {
+  margin-top: auto;
+  color: #9a854e;
+  background: #f7f2e5;
+  border-radius: 8px;
+  padding: 7px 13px;
+  width: fit-content;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.note {
+  margin-top: 35px;
+  padding: 20px 23px;
+  background: var(--green-light);
+  border-left: 4px solid var(--gold);
+  border-radius: 10px;
+  color: var(--green-dark);
+  font-size: 14px;
+}
+
+footer {
+  text-align: center;
+  padding: 25px 20px;
+  color: var(--muted);
+  font-size: 13px;
+  border-top: 1px solid #e8e8df;
+  background: white;
+}
+
+@media (max-width: 600px) {
+  main {
+    padding-top: 30px;
+  }
+
+  .card {
+    min-height: 175px;
+  }
+
+  .header-inner {
+    justify-content: center;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">БИОЕГЭ с Любовью</div>
+    <a class="back-link" href="./index.html">← На главную сайта</a>
+  </div>
+</header>
+
+<main>
+
+  <section class="intro">
+    <div class="eyebrow">Подготовка к экзамену</div>
+    <h1>Банк заданий ОГЭ по биологии</h1>
+    <p>
+      Изучай темы, проверяй знания и закрепляй материал
+      с помощью авторских заданий и тренировочных материалов.
+    </p>
+  </section>
+
+  <h2 class="section-title">Тематические разделы</h2>
+
+  <section class="cards">
+
+    <article class="card active">
+      <div class="card-icon">🔬</div>
+      <h3>Клетка и химический состав</h3>
+      <p>
+        Строение клетки, органоиды, химические вещества
+        и их функции.
+      </p>
+      <a class="card-link" href="./bank-oge.html">
+        Перейти к заданиям →
+      </a>
+    </article>
+
+    <article class="card">
+      <div class="card-icon">🫀</div>
+      <h3>Организм человека</h3>
+      <p>
+        Системы органов, строение и функции организма,
+        процессы жизнедеятельности.
+      </p>
+      <span class="coming">Скоро</span>
+    </article>
+
+    <article class="card">
+      <div class="card-icon">🌿</div>
+      <h3>Растения</h3>
+      <p>
+        Строение растений, ткани, органы,
+        размножение и жизненные процессы.
+      </p>
+      <span class="coming">Скоро</span>
+    </article>
+
+    <article class="card">
+      <div class="card-icon">🦋</div>
+      <h3>Животные</h3>
+      <p>
+        Многообразие животных, особенности строения,
+        классификация и жизнедеятельность.
+      </p>
+      <span class="coming">Скоро</span>
+    </article>
+
+    <article class="card">
+      <div class="card-icon">🍄</div>
+      <h3>Грибы и бактерии</h3>
+      <p>
+        Особенности строения, питания, размножения
+        и значение в природе.
+      </p>
+      <span class="coming">Скоро</span>
+    </article>
+
+    <article class="card">
+      <div class="card-icon">🌍</div>
+      <h3>Экология</h3>
+      <p>
+        Экосистемы, пищевые цепи, связи организмов
+        и факторы окружающей среды.
+      </p>
+      <span class="coming">Скоро</span>
+    </article>
+
+    <article class="card">
+      <div class="card-icon">🧬</div>
+      <h3>Общая биология</h3>
+      <p>
+        Основные закономерности живой природы,
+        свойства живого и методы биологии.
+      </p>
+      <span class="coming">Скоро</span>
+    </article>
+
+  </section>
+
+  <div class="note">
+    <strong>Важно!</strong>
+    Банк заданий будет постепенно пополняться.
+    Новые тематические тренажёры появятся в соответствующих разделах.
+  </div>
+
+</main>
+
+<footer>
+  БИОЕГЭ с Любовью · Авторские материалы по биологии
+</footer>
+
+</body>
+</html>
