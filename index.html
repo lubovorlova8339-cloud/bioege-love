@@ -1,15 +1,18 @@
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>БИОЕГЭ с Любовью — репетитор по биологии</title>
+
 <style>
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
+
 body {
   font-family: Arial, sans-serif;
   background: #fffdf8;
@@ -104,10 +107,12 @@ nav a {
   text-decoration: none;
   margin-top: 12px;
   font-weight: bold;
+  transition: 0.2s;
 }
 
 .button:hover {
   background: #17452a;
+  transform: translateY(-2px);
 }
 
 section {
@@ -120,13 +125,6 @@ section h2 {
   color: #205535;
   margin-bottom: 25px;
 }
-
-.about {
-  max-width: 950px;
-  margin: auto;
-}
-
-/* ===== РАЗДЕЛ ОБО МНЕ ===== */
 
 .about {
   max-width: 1100px;
@@ -143,6 +141,7 @@ section h2 {
 
 .about-intro p {
   font-size: 18px;
+  margin-bottom: 12px;
 }
 
 .about-lead {
@@ -184,15 +183,6 @@ section h2 {
   margin-bottom: 20px;
 }
 
-.about-list {
-  padding-left: 22px;
-  margin: 12px 0;
-}
-
-.about-list li {
-  margin-bottom: 10px;
-}
-
 .about-quote {
   background: #f5f3e9;
   border-radius: 12px;
@@ -208,9 +198,148 @@ section h2 {
   font-size: 22px;
 }
 
-.about-note {
-  color: #68766a;
-  font-size: 14px;
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 22px;
+  margin-top: 22px;
+}
+
+.card {
+  background: white;
+  padding: 25px;
+  border: 1px solid #e8dfc9;
+  border-radius: 12px;
+}
+
+.card h3 {
+  color: #987b36;
+  margin-bottom: 12px;
+}
+
+.card p {
+  margin-bottom: 10px;
+}
+
+.materials {
+  background: #f5f3e9;
+}
+
+/* Интерактивная модель клетки */
+
+.cell-promo {
+  max-width: 950px;
+  margin: 45px auto;
+  padding: 28px;
+  border: 1px solid #dce9dc;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #ffffff, #f1f7ef);
+  box-shadow: 0 8px 25px rgba(39, 83, 48, 0.08);
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+.cell-promo-icon {
+  font-size: 65px;
+  min-width: 85px;
+  text-align: center;
+}
+
+.cell-promo-content {
+  flex: 1;
+  min-width: 220px;
+}
+
+.cell-promo h2 {
+  color: #245b38;
+  margin: 0 0 12px;
+  font-size: 25px;
+}
+
+.cell-promo p {
+  color: #526457;
+  line-height: 1.6;
+  margin: 0 0 18px;
+}
+
+.cell-promo a {
+  display: inline-block;
+  background: #287344;
+  color: white;
+  text-decoration: none;
+  padding: 12px 25px;
+  border-radius: 10px;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+.cell-promo a:hover {
+  background: #1d542f;
+  transform: translateY(-2px);
+}
+
+.cell-promo-label {
+  color: #a17b2c;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+/* Банк заданий */
+
+#task-bank {
+  background: #fffdf8;
+}
+
+.bank-intro {
+  max-width: 750px;
+  margin-bottom: 25px;
+}
+
+.bank-card {
+  background: white;
+  border: 1px solid #e8dfc9;
+  border-radius: 14px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.bank-card h3 {
+  color: #205535;
+  font-family: Georgia, serif;
+  font-size: 24px;
+  margin-bottom: 12px;
+}
+
+.bank-icon {
+  font-size: 38px;
+  margin-bottom: 12px;
+}
+
+.bank-card .button {
+  margin-top: auto;
+}
+
+.bank-note {
+  color: #7b806f;
+  font-size: 13px;
+  margin-top: 12px;
+}
+
+footer {
+  background: #214d38;
+  color: white;
+  text-align: center;
+  padding: 30px 15px;
+}
+
+footer a {
+  color: #f0d99b;
 }
 
 @media (max-width: 600px) {
@@ -229,39 +358,11 @@ section h2 {
   .about-quote {
     padding: 20px;
   }
-}
 
-.cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 22px;
-}
-
-.card {
-  background: white;
-  padding: 25px;
-  border: 1px solid #e8dfc9;
-  border-radius: 12px;
-}
-
-.card h3 {
-  color: #987b36;
-  margin-bottom: 12px;
-}
-
-.materials {
-  background: #f5f3e9;
-}
-
-footer {
-  background: #214d38;
-  color: white;
-  text-align: center;
-  padding: 30px 15px;
-}
-
-footer a {
-  color: #f0d99b;
+  .cell-promo {
+    margin: 25px 12px;
+    padding: 22px;
+  }
 }
 
 @media (max-width: 750px) {
@@ -299,7 +400,8 @@ footer a {
 
 <header>
   <div class="brand">
-    <img src="Логотип для _БИОЕГЭ с Любовью_.png" alt="Логотип БИОЕГЭ с Любовью">
+    <img src="Логотип для _БИОЕГЭ с Любовью_.png"
+         alt="Логотип БИОЕГЭ с Любовью">
     <div>
       <h1>БИОЕГЭ с Любовью</h1>
       <p>Биология • ОГЭ • ЕГЭ</p>
@@ -332,7 +434,8 @@ footer a {
     </a>
   </div>
 
-  <img src="Профессиональный портрет биолога с ДНК-фоном.png" alt="Репетитор по биологии">
+  <img src="Профессиональный портрет биолога с ДНК-фоном.png"
+       alt="Репетитор по биологии">
 </div>
 
 <section id="about">
@@ -522,7 +625,10 @@ footer a {
       </div>
       <div class="card">
         <h3>Сеченовский университет</h3>
-        <p>Первый Московский государственный медицинский университет имени И. М. Сеченова.</p>
+        <p>
+          Первый Московский государственный медицинский
+          университет имени И. М. Сеченова.
+        </p>
       </div>
     </div>
 
@@ -548,9 +654,10 @@ footer a {
         знания, понимание и уверенность!
       </p>
     </div>
-    </div>
+
+  </div>
 </section>
-  
+
 <section id="lessons">
   <h2>Занятия и направления подготовки</h2>
 
@@ -621,7 +728,7 @@ footer a {
         фотолиз воды, работу фотосистем,
         перенос электронов, образование АТФ и НАДФ·Н.
       </p>
-      <a class="button" href="photosynthesis.html">
+      <a class="button" href="./photosynthesis.html">
         Открыть лабораторию
       </a>
     </div>
@@ -633,85 +740,84 @@ footer a {
         интерфазу, профазу, метафазу,
         анафазу, телофазу и цитокинез.
       </p>
-      <a class="button" href="mitosis.html">
+      <a class="button" href="./mitosis.html">
         Открыть лабораторию
       </a>
     </div>
   </div>
 </section>
 
+<!-- БАНК ЗАДАНИЙ -->
+
 <section id="task-bank">
   <h2>Банк заданий по биологии</h2>
-  <p>
-    Тренируйся, проверяй свои знания и разбирай задания
-    в формате государственных экзаменов.
-  </p>
-    <div class="card">
-      <h3>Банк заданий ОГЭ</h3>
-      <p>
-        Практика по темам ОГЭ: задания разного уровня,
-        автоматическая проверка и объяснения ответов.
-      </p>
-      <a class="button" href="./bank-oge.html">
-        Перейти к заданиям ОГЭ
-      </a>
-    </div>
 
-    <div class="card">
-      <h3>Банк заданий ЕГЭ</h3>
-      <p>
-        Авторские задания для подготовки к ЕГЭ-2027.
-        Тематические тренажёры, проверка ответов
-        и подробные пояснения.
-      </p>
-      <a class="button" href="./bank-ege.html">
-        Открыть банк заданий ЕГЭ
-      </a>
-      <p class="small-text">
-        Тематические разделы биологии
-      </p>
-    </div>
-  </div>
-</section>
-
-  <h2>Банк заданий по биологии</h2>
-  <p>
-    Тренируйся, проверяй свои знания и разбирай задания
-    в формате государственных экзаменов.
+  <p class="bank-intro">
+    Выбирай экзамен и тематический тренажёр.
+    Проверяй знания, закрепляй материал
+    и готовься к экзаменам постепенно.
   </p>
 
   <div class="cards">
-    <div class="card">
+
+    <div class="bank-card">
+      <div class="bank-icon">📘</div>
       <h3>Банк заданий ОГЭ</h3>
       <p>
-        Практика по темам ОГЭ: задания разного уровня,
-        автоматическая проверка и объяснения ответов.
+        Подготовка к основному государственному экзамену.
+        Тематические задания, проверка знаний
+        и практика по основным разделам биологии.
       </p>
-      <a class="button" href="bank-oge.html">
-        Перейти к заданиям ОГЭ
+      <a class="button" href="./bank-oge-catalog.html">
+        Открыть разделы ОГЭ
       </a>
+      <p class="bank-note">
+        Клетка · Растения · Животные · Человек · Экология
+      </p>
     </div>
 
-    
-<div class="card"><div class="card">
-  <h3>Банк заданий ЕГЭ</h3>
-  <p>
-    Авторские задания для подготовки к ЕГЭ-2027.
-    Тематические тренажёры, проверка ответов
-    и подробные пояснения.
-  </p>
+    <div class="bank-card">
+      <div class="bank-icon">🧬</div>
+      <h3>Банк заданий ЕГЭ</h3>
+      <p>
+        Углублённая подготовка к ЕГЭ-2027.
+        Тематические тренажёры, задания
+        и разбор сложных биологических процессов.
+      </p>
+      <a class="button" href="./bank-ege.html">
+        Открыть разделы ЕГЭ
+      </a>
+      <p class="bank-note">
+        Клетка · Генетика · Ботаника · Зоология · Экология
+      </p>
+    </div>
 
-  <a class="button" href="./bank-ege-griby.html">
-    Открыть банк заданий ЕГЭ
-  </a>
-
-  <p class="small-text">
-    Грибы и лишайники · 81 задание · 8 блоков
-  </p>
-</div>
-
+  </div>
 </section>
 
+<!-- ИНТЕРАКТИВНАЯ МОДЕЛЬ КЛЕТКИ -->
+
+<section>
+  <div class="cell-promo">
+    <div class="cell-promo-icon">🔬</div>
+
+    <div class="cell-promo-content">
+      <div class="cell-promo-label">
+        ИНТЕРАКТИВНАЯ БИОЛОГИЯ
+      </div>
+
+      <h2>Интерактивная модель клетки</h2>
+
+      <p>
+        Изучай строение животной и растительной клетки.
+        Выбирай органоиды, знакомься с их особенностями
+        и проверяй свои знания!
+      </p>
+
+      <a href="./cell.html">Открыть симуляцию →</a>
+    </div>
+  </div>
+</section>
 
 <section id="contacts">
   <h2>Контакты</h2>
@@ -734,94 +840,4 @@ footer a {
 </footer>
 
 </body>
-<style>
-.cell-promo {
-  max-width: 950px;
-  margin: 45px auto;
-  padding: 28px;
-  border: 1px solid #dce9dc;
-  border-radius: 20px;
-  background: linear-gradient(135deg, #ffffff, #f1f7ef);
-  box-shadow: 0 8px 25px rgba(39, 83, 48, 0.08);
-  display: flex;
-  align-items: center;
-  gap: 25px;
-  flex-wrap: wrap;
-  box-sizing: border-box;
-}
-
-.cell-promo-icon {
-  font-size: 65px;
-  min-width: 85px;
-  text-align: center;
-}
-
-.cell-promo-content {
-  flex: 1;
-  min-width: 220px;
-}
-
-.cell-promo h2 {
-  color: #245b38;
-  margin: 0 0 12px;
-  font-size: 25px;
-}
-
-.cell-promo p {
-  color: #526457;
-  line-height: 1.6;
-  margin: 0 0 18px;
-}
-
-.cell-promo a {
-  display: inline-block;
-  background: #287344;
-  color: white;
-  text-decoration: none;
-  padding: 12px 25px;
-  border-radius: 10px;
-  font-weight: bold;
-  transition: 0.2s;
-}
-
-.cell-promo a:hover {
-  background: #1d542f;
-  transform: translateY(-2px);
-}
-
-.cell-promo-label {
-  color: #a17b2c;
-  font-size: 12px;
-  font-weight: bold;
-  letter-spacing: 1px;
-  margin-bottom: 8px;
-}
-
-@media (max-width: 600px) {
-  .cell-promo {
-    margin: 25px 12px;
-    padding: 22px;
-  }
-}
-</style>
-
-<section class="cell-promo">
-  <div class="cell-promo-icon">🔬</div>
-
-  <div class="cell-promo-content">
-    <div class="cell-promo-label">ИНТЕРАКТИВНАЯ БИОЛОГИЯ</div>
-
-    <h2>Интерактивная модель клетки</h2>
-
-    <p>
-      Изучай строение животной и растительной клетки.
-      Выбирай органоиды, знакомься с их особенностями
-      и проверяй свои знания!
-    </p>
-
-    <a href="./cell.html">Открыть симуляцию →</a>
-  </div>
-</section>
-
 </html>
-
