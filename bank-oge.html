@@ -1,338 +1,297 @@
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Тематический тренажёр ОГЭ по биологии: клетка и химический состав.">
-  <title>ОГЭ · Клетка и химический состав | БИОЕГЭ с Любовью</title>
-  <style>
-    :root {
-      --green: #315f49;
-      --green-2: #47785e;
-      --green-soft: #eaf1eb;
-      --gold: #b49350;
-      --ink: #26352d;
-      --muted: #68756d;
-      --paper: #fbfaf6;
-      --white: #ffffff;
-      --line: #e4e8e1;
-      --good: #e8f4eb;
-      --good-border: #7eae8a;
-      --bad: #fff0ed;
-      --bad-border: #d69a8e;
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      color: var(--ink);
-      background: var(--paper);
-      font-family: Arial, Helvetica, sans-serif;
-      line-height: 1.55;
-    }
-    .page { width: min(920px, calc(100% - 32px)); margin: 0 auto; padding: 28px 0 56px; }
-    .topline { color: var(--green); font-size: 12px; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; }
-    header { padding: 24px 26px; border: 1px solid var(--line); border-radius: 20px; background: var(--white); box-shadow: 0 8px 28px rgba(38,53,45,.045); }
-    h1 { margin: 8px 0 8px; color: var(--green); font-size: clamp(27px, 5vw, 38px); line-height: 1.15; }
-    .subtitle { margin: 0; color: var(--muted); }
-    .meta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
-    .pill { display: inline-block; padding: 5px 11px; border-radius: 999px; background: var(--green-soft); color: var(--green); font-size: 12px; font-weight: 700; }
-    .notice { margin: 18px 0 22px; padding: 13px 16px; border-left: 3px solid var(--gold); border-radius: 8px; background: #f5f0e5; color: #655637; font-size: 14px; }
-    .section-title { margin: 28px 0 12px; color: var(--green); font-size: 21px; }
-    .question {
-      margin: 13px 0; padding: 20px; border: 1px solid var(--line); border-radius: 15px;
-      background: var(--white); box-shadow: 0 4px 16px rgba(38,53,45,.025);
-    }
-    .qhead { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 10px; }
-    .qnum { flex: 0 0 32px; width: 32px; height: 32px; display: grid; place-items: center; border-radius: 10px; background: var(--green-soft); color: var(--green); font-weight: 700; }
-    .qtitle { margin: 1px 0 0; font-size: 16px; font-weight: 700; }
-    .qtext { margin: 8px 0 13px; }
-    .hint { margin: 0 0 10px; color: var(--muted); font-size: 13px; }
-    .options { display: grid; gap: 9px; }
-    label.option { display: flex; align-items: flex-start; gap: 10px; padding: 9px 11px; border: 1px solid #edf0eb; border-radius: 9px; cursor: pointer; }
-    label.option:hover { background: #f8faf7; border-color: #cbd9cd; }
-    input[type="checkbox"], input[type="radio"] { margin-top: 4px; accent-color: var(--green); }
-    select {
-      width: 100%; max-width: 320px; margin: 5px 0 10px; padding: 10px 12px;
-      border: 1px solid #cfd8cf; border-radius: 9px; background: white; color: var(--ink); font: inherit;
-    }
-    .match-row { display: grid; grid-template-columns: minmax(0,1fr) minmax(170px, .9fr); align-items: center; gap: 12px; padding: 7px 0; }
-    .match-row label { font-weight: 700; }
-    .actions { display: flex; flex-wrap: wrap; gap: 10px; margin: 24px 0; }
-    button { border: 0; border-radius: 10px; padding: 12px 19px; font: inherit; font-weight: 700; cursor: pointer; }
-    button:focus-visible, input:focus-visible, select:focus-visible { outline: 3px solid #c7aa6d; outline-offset: 2px; }
-    .primary { background: var(--green); color: white; }
-    .primary:hover { background: #244b37; }
-    .secondary { background: #eeeae0; color: #5f543e; }
-    button:disabled { opacity: .6; cursor: not-allowed; }
-    #result { display: none; margin-top: 22px; padding: 22px; border: 1px solid var(--line); border-radius: 16px; background: white; }
-    #result h2 { margin: 0 0 5px; color: var(--green); }
-    #score { font-size: 28px; font-weight: 800; color: var(--green); }
-    .feedback { display: none; margin-top: 13px; padding: 12px 14px; border-radius: 10px; font-size: 14px; }
-    .feedback.good { display: block; background: var(--good); border: 1px solid var(--good-border); }
-    .feedback.bad { display: block; background: var(--bad); border: 1px solid var(--bad-border); }
-    .feedback strong { display: block; margin-bottom: 3px; }
-    .footer { margin-top: 30px; padding-top: 15px; border-top: 1px solid var(--line); color: var(--muted); text-align: center; font-size: 12px; }
-    @media (max-width: 560px) {
-      .page { width: min(100% - 20px, 920px); padding-top: 12px; }
-      header, .question { padding: 16px; }
-      .match-row { grid-template-columns: 1fr; gap: 2px; }
-      select { max-width: none; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Банк заданий ОГЭ | БИОЕГЭ с Любовью</title>
+
+<style>
+:root {
+  --green: #315f45;
+  --green-dark: #244936;
+  --green-light: #eaf2eb;
+  --gold: #c5a45b;
+  --cream: #fbfaf5;
+  --text: #303b33;
+  --muted: #788078;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: var(--cream);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+header {
+  background: white;
+  border-bottom: 1px solid #e8e8df;
+  padding: 18px 20px;
+}
+
+.header-inner {
+  max-width: 1100px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.logo {
+  color: var(--green);
+  font-size: 19px;
+  font-weight: bold;
+}
+
+.back-link {
+  color: var(--green);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.back-link:hover {
+  color: var(--gold);
+}
+
+main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 45px 20px 65px;
+}
+
+.intro {
+  text-align: center;
+  margin-bottom: 38px;
+}
+
+.eyebrow {
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+h1 {
+  color: var(--green-dark);
+  font-size: clamp(28px, 5vw, 42px);
+  line-height: 1.2;
+  margin: 12px 0;
+}
+
+.intro p {
+  max-width: 650px;
+  margin: 0 auto;
+  color: var(--muted);
+  font-size: 16px;
+}
+
+.section-title {
+  color: var(--green-dark);
+  font-size: 23px;
+  margin: 35px 0 18px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 18px;
+}
+
+.card {
+  background: white;
+  border: 1px solid #e8e9df;
+  border-radius: 15px;
+  padding: 23px;
+  min-height: 190px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 5px 18px rgba(39, 65, 47, 0.045);
+}
+
+.card-icon {
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+.card h3 {
+  color: var(--green);
+  font-size: 18px;
+  margin: 0 0 8px;
+}
+
+.card p {
+  color: var(--muted);
+  font-size: 14px;
+  margin: 0 0 18px;
+}
+
+.coming {
+  margin-top: auto;
+  color: #9a854e;
+  background: #f7f2e5;
+  border-radius: 8px;
+  padding: 7px 13px;
+  width: fit-content;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.note {
+  margin-top: 35px;
+  padding: 20px 23px;
+  background: var(--green-light);
+  border-left: 4px solid var(--gold);
+  border-radius: 10px;
+  color: var(--green-dark);
+  font-size: 14px;
+}
+
+footer {
+  text-align: center;
+  padding: 25px 20px;
+  color: var(--muted);
+  font-size: 13px;
+  border-top: 1px solid #e8e8df;
+  background: white;
+}
+
+@media (max-width: 600px) {
+  main {
+    padding-top: 30px;
+  }
+
+  .card {
+    min-height: 175px;
+  }
+
+  .header-inner {
+    justify-content: center;
+  }
+}
+</style>
 </head>
+
 <body>
-  <main class="page">
-    <header>
-      <div class="topline">БИОЕГЭ с Любовью · Банк заданий</div>
-      <h1>Клетка и химический состав</h1>
-      <p class="subtitle">Тематический тренажёр по биологии · ОГЭ</p>
-      <div class="meta">
-        <span class="pill">10 заданий</span>
-        <span class="pill">Базовый — повышенный уровень</span>
-        <span class="pill">Самостоятельная тренировка</span>
-      </div>
-    </header>
 
-    <div class="notice">
-      Выберите ответы во всех заданиях, затем нажмите «Проверить работу».
-      Для заданий с несколькими ответами необходимо отметить весь правильный набор.
-      Результат и пояснения появятся после общей проверки.
-    </div>
+<header>
+  <div class="header-inner">
+    <div class="logo">БИОЕГЭ с Любовью</div>
+    <a class="back-link" href="./index.html">
+      ← На главную сайта
+    </a>
+  </div>
+</header>
 
-    <form id="quiz">
-      <h2 class="section-title">А. Химические элементы клетки</h2>
+<main>
 
-      <section class="question" data-q="1">
-        <div class="qhead"><span class="qnum">1</span><p class="qtitle">Выберите четыре правильных ответа.</p></div>
-        <p class="qtext">Какие химические элементы относятся к основным органогенным элементам клетки?</p>
-        <div class="options">
-          <label class="option"><input type="checkbox" name="q1" value="1"> <span>1. Углерод</span></label>
-          <label class="option"><input type="checkbox" name="q1" value="2"> <span>2. Железо</span></label>
-          <label class="option"><input type="checkbox" name="q1" value="3"> <span>3. Кислород</span></label>
-          <label class="option"><input type="checkbox" name="q1" value="4"> <span>4. Водород</span></label>
-          <label class="option"><input type="checkbox" name="q1" value="5"> <span>5. Азот</span></label>
-          <label class="option"><input type="checkbox" name="q1" value="6"> <span>6. Натрий</span></label>
-        </div>
-        <div class="feedback" id="fb1"></div>
-      </section>
+  <section class="intro">
+    <div class="eyebrow">Подготовка к экзамену</div>
 
-      <section class="question" data-q="2">
-        <div class="qhead"><span class="qnum">2</span><p class="qtitle">Установите соответствие.</p></div>
-        <p class="qtext">Установите соответствие между химическим элементом и его биологическим значением.</p>
-        <div class="match-row"><label for="q2a">А. Железо</label><select id="q2a" name="q2a"><option value="">Выберите...</option><option value="1">1. Входит в состав гормонов щитовидной железы</option><option value="2">2. Входит в состав гемоглобина</option><option value="3">3. Входит в состав костной ткани и зубов</option></select></div>
-        <div class="match-row"><label for="q2b">Б. Йод</label><select id="q2b" name="q2b"><option value="">Выберите...</option><option value="1">1. Входит в состав гормонов щитовидной железы</option><option value="2">2. Входит в состав гемоглобина</option><option value="3">3. Входит в состав костной ткани и зубов</option></select></div>
-        <div class="match-row"><label for="q2c">В. Кальций</label><select id="q2c" name="q2c"><option value="">Выберите...</option><option value="1">1. Входит в состав гормонов щитовидной железы</option><option value="2">2. Входит в состав гемоглобина</option><option value="3">3. Входит в состав костной ткани и зубов</option></select></div>
-        <div class="feedback" id="fb2"></div>
-      </section>
+    <h1>Банк заданий ОГЭ по биологии</h1>
 
-      <section class="question" data-q="3">
-        <div class="qhead"><span class="qnum">3</span><p class="qtitle">Выберите один правильный ответ.</p></div>
-        <p class="qtext">Какой из перечисленных химических элементов относится к микроэлементам?</p>
-        <div class="options">
-          <label class="option"><input type="radio" name="q3" value="1"> <span>1. Углерод</span></label>
-          <label class="option"><input type="radio" name="q3" value="2"> <span>2. Кислород</span></label>
-          <label class="option"><input type="radio" name="q3" value="3"> <span>3. Азот</span></label>
-          <label class="option"><input type="radio" name="q3" value="4"> <span>4. Йод</span></label>
-        </div>
-        <div class="feedback" id="fb3"></div>
-      </section>
+    <p>
+      Изучай темы, проверяй знания и закрепляй материал
+      с помощью авторских заданий и тренировочных материалов.
+    </p>
+  </section>
 
-      <h2 class="section-title">Б. Вода и минеральные соли</h2>
+  <h2 class="section-title">Тематические разделы</h2>
 
-      <section class="question" data-q="4">
-        <div class="qhead"><span class="qnum">4</span><p class="qtitle">Выберите один правильный ответ.</p></div>
-        <p class="qtext">Какое свойство молекул воды обеспечивает способность воды растворять многие ионные и полярные вещества?</p>
-        <div class="options">
-          <label class="option"><input type="radio" name="q4" value="1"> <span>1. Наличие неполярных молекул</span></label>
-          <label class="option"><input type="radio" name="q4" value="2"> <span>2. Полярность молекул воды</span></label>
-          <label class="option"><input type="radio" name="q4" value="3"> <span>3. Наличие атомов углерода</span></label>
-          <label class="option"><input type="radio" name="q4" value="4"> <span>4. Способность образовывать белковые молекулы</span></label>
-        </div>
-        <div class="feedback" id="fb4"></div>
-      </section>
+  <section class="cards">
 
-      <section class="question" data-q="5">
-        <div class="qhead"><span class="qnum">5</span><p class="qtitle">Выберите три правильных ответа.</p></div>
-        <p class="qtext">Какие функции выполняет вода в клетках и организме?</p>
-        <div class="options">
-          <label class="option"><input type="checkbox" name="q5" value="1"> <span>1. Участвует в транспорте растворённых веществ</span></label>
-          <label class="option"><input type="checkbox" name="q5" value="2"> <span>2. Обеспечивает сохранение наследственной информации</span></label>
-          <label class="option"><input type="checkbox" name="q5" value="3"> <span>3. Участвует в терморегуляции</span></label>
-          <label class="option"><input type="checkbox" name="q5" value="4"> <span>4. Служит средой для протекания многих химических реакций</span></label>
-          <label class="option"><input type="checkbox" name="q5" value="5"> <span>5. Катализирует все реакции клетки</span></label>
-          <label class="option"><input type="checkbox" name="q5" value="6"> <span>6. Образует молекулы белков</span></label>
-        </div>
-        <div class="feedback" id="fb5"></div>
-      </section>
+    <article class="card">
+      <div class="card-icon">🔬</div>
+      <h3>Клетка и химический состав</h3>
+      <p>
+        Строение клетки, органоиды, химические вещества
+        и их функции.
+      </p>
+      <span class="coming">Скоро</span>
+    </article>
 
-      <section class="question" data-q="6">
-        <div class="qhead"><span class="qnum">6</span><p class="qtitle">Выберите два правильных ответа.</p></div>
-        <p class="qtext">В каких формах минеральные соли могут присутствовать в клетках?</p>
-        <div class="options">
-          <label class="option"><input type="checkbox" name="q6" value="1"> <span>1. В виде ионов, растворённых в воде</span></label>
-          <label class="option"><input type="checkbox" name="q6" value="2"> <span>2. В виде нерастворимых минеральных соединений</span></label>
-          <label class="option"><input type="checkbox" name="q6" value="3"> <span>3. Только в составе белков</span></label>
-          <label class="option"><input type="checkbox" name="q6" value="4"> <span>4. Только в составе нуклеиновых кислот</span></label>
-          <label class="option"><input type="checkbox" name="q6" value="5"> <span>5. Только в виде газов</span></label>
-        </div>
-        <div class="feedback" id="fb6"></div>
-      </section>
+    <article class="card">
+      <div class="card-icon">🫀</div>
+      <h3>Организм человека</h3>
+      <p>
+        Системы органов, строение и функции организма,
+        процессы жизнедеятельности.
+      </p>
+      <span class="coming">Скоро</span>
+    </article>
 
-      <section class="question" data-q="7">
-        <div class="qhead"><span class="qnum">7</span><p class="qtitle">Выберите один правильный ответ.</p></div>
-        <p class="qtext">Ионы какого химического элемента участвуют в сокращении мышц и процессе свёртывания крови?</p>
-        <div class="options">
-          <label class="option"><input type="radio" name="q7" value="1"> <span>1. Калия</span></label>
-          <label class="option"><input type="radio" name="q7" value="2"> <span>2. Кальция</span></label>
-          <label class="option"><input type="radio" name="q7" value="3"> <span>3. Железа</span></label>
-          <label class="option"><input type="radio" name="q7" value="4"> <span>4. Йода</span></label>
-        </div>
-        <div class="feedback" id="fb7"></div>
-      </section>
+    <article class="card">
+      <div class="card-icon">🌿</div>
+      <h3>Растения</h3>
+      <p>
+        Строение растений, ткани, органы,
+        размножение и жизненные процессы.
+      </p>
+      <span class="coming">Скоро</span>
+    </article>
 
-      <h2 class="section-title">В. Углеводы и липиды</h2>
+    <article class="card">
+      <div class="card-icon">🦋</div>
+      <h3>Животные</h3>
+      <p>
+        Многообразие животных, особенности строения,
+        классификация и жизнедеятельность.
+      </p>
+      <span class="coming">Скоро</span>
+    </article>
 
-      <section class="question" data-q="8">
-        <div class="qhead"><span class="qnum">8</span><p class="qtitle">Выберите три правильных ответа.</p></div>
-        <p class="qtext">Какие вещества относятся к углеводам?</p>
-        <div class="options">
-          <label class="option"><input type="checkbox" name="q8" value="1"> <span>1. Глюкоза</span></label>
-          <label class="option"><input type="checkbox" name="q8" value="2"> <span>2. Гликоген</span></label>
-          <label class="option"><input type="checkbox" name="q8" value="3"> <span>3. Крахмал</span></label>
-          <label class="option"><input type="checkbox" name="q8" value="4"> <span>4. Холестерин</span></label>
-          <label class="option"><input type="checkbox" name="q8" value="5"> <span>5. Фосфолипид</span></label>
-          <label class="option"><input type="checkbox" name="q8" value="6"> <span>6. Гемоглобин</span></label>
-        </div>
-        <div class="feedback" id="fb8"></div>
-      </section>
+    <article class="card">
+      <div class="card-icon">🍄</div>
+      <h3>Грибы и бактерии</h3>
+      <p>
+        Особенности строения, питания, размножения
+        и значение в природе.
+      </p>
+      <span class="coming">Скоро</span>
+    </article>
 
-      <section class="question" data-q="9">
-        <div class="qhead"><span class="qnum">9</span><p class="qtitle">Выберите один правильный ответ.</p></div>
-        <p class="qtext">Какой углевод является запасным веществом в клетках животных?</p>
-        <div class="options">
-          <label class="option"><input type="radio" name="q9" value="1"> <span>1. Целлюлоза</span></label>
-          <label class="option"><input type="radio" name="q9" value="2"> <span>2. Крахмал</span></label>
-          <label class="option"><input type="radio" name="q9" value="3"> <span>3. Гликоген</span></label>
-          <label class="option"><input type="radio" name="q9" value="4"> <span>4. Рибоза</span></label>
-        </div>
-        <div class="feedback" id="fb9"></div>
-      </section>
+    <article class="card">
+      <div class="card-icon">🌍</div>
+      <h3>Экология</h3>
+      <p>
+        Экосистемы, пищевые цепи, связи организмов
+        и факторы окружающей среды.
+      </p>
+      <span class="coming">Скоро</span>
+    </article>
 
-      <section class="question" data-q="10">
-        <div class="qhead"><span class="qnum">10</span><p class="qtitle">Выберите два правильных ответа.</p></div>
-        <p class="qtext">Какие утверждения о липидах верны?</p>
-        <div class="options">
-          <label class="option"><input type="checkbox" name="q10" value="1"> <span>1. Жиры могут выполнять запасающую энергетическую функцию</span></label>
-          <label class="option"><input type="checkbox" name="q10" value="2"> <span>2. Фосфолипиды входят в состав биологических мембран</span></label>
-          <label class="option"><input type="checkbox" name="q10" value="3"> <span>3. Липиды являются основным носителем наследственной информации</span></label>
-          <label class="option"><input type="checkbox" name="q10" value="4"> <span>4. Все липиды хорошо растворяются в воде</span></label>
-          <label class="option"><input type="checkbox" name="q10" value="5"> <span>5. Жиры состоят из аминокислот</span></label>
-        </div>
-        <div class="feedback" id="fb10"></div>
-      </section>
+    <article class="card">
+      <div class="card-icon">🧬</div>
+      <h3>Общая биология</h3>
+      <p>
+        Основные закономерности живой природы,
+        свойства живого и методы биологии.
+      </p>
+      <span class="coming">Скоро</span>
+    </article>
 
-      <div class="actions">
-        <button class="primary" id="checkBtn" type="button">Проверить работу</button>
-        <button class="secondary" id="resetBtn" type="reset">Начать заново</button>
-      </div>
-    </form>
+  </section>
 
-    <section id="result" aria-live="polite">
-      <h2>Результат тренировки</h2>
-      <div id="score"></div>
-      <p id="summary"></p>
-      <p class="hint">Каждое задание оценивается в 1 балл. В заданиях с несколькими ответами балл начисляется только за полностью правильный набор.</p>
-    </section>
+  <div class="note">
+    <strong>Важно!</strong>
+    Банк заданий будет постепенно пополняться.
+    Новые тематические тренажёры появятся в соответствующих разделах.
+  </div>
 
-    <div class="footer">БИОЕГЭ с Любовью · Авторский учебный тренажёр</div>
-  </main>
+</main>
 
-  <script>
-    const explanations = {
-      1: "Правильные ответы: 1, 3, 4, 5. Углерод, водород, кислород и азот — основные органогенные элементы, составляющие основу многих органических веществ клетки.",
-      2: "Правильная последовательность: 2, 1, 3. Железо входит в состав гема гемоглобина, йод — гормонов щитовидной железы, кальций важен для костной ткани и зубов.",
-      3: "Правильный ответ: 4. Йод относится к микроэлементам: он необходим организму в небольших количествах.",
-      4: "Правильный ответ: 2. Полярность молекул воды позволяет ей взаимодействовать со многими ионами и полярными молекулами.",
-      5: "Правильные ответы: 1, 3, 4. Вода участвует в транспорте веществ и терморегуляции, а также служит средой для многих химических реакций.",
-      6: "Правильные ответы: 1, 2. Минеральные соли могут присутствовать в клетке в растворённом виде (в виде ионов) и в виде нерастворимых соединений.",
-      7: "Правильный ответ: 2. Ионы кальция участвуют в регуляции мышечного сокращения и процессах свёртывания крови.",
-      8: "Правильные ответы: 1, 2, 3. Глюкоза — моносахарид, гликоген и крахмал — полисахариды.",
-      9: "Правильный ответ: 3. Гликоген — запасной углевод животных и грибов.",
-      10: "Правильные ответы: 1, 2. Жиры могут служить энергетическим резервом, а фосфолипиды — важные компоненты биологических мембран."
-    };
+<footer>
+  БИОЕГЭ с Любовью · Авторские материалы по биологии
+</footer>
 
-    const answerKeys = {
-      1: ["1", "3", "4", "5"],
-      2: ["2", "1", "3"],
-      3: ["4"],
-      4: ["2"],
-      5: ["1", "3", "4"],
-      6: ["1", "2"],
-      7: ["2"],
-      8: ["1", "2", "3"],
-      9: ["3"],
-      10: ["1", "2"]
-    };
-
-    function selectedValues(name) {
-      return Array.from(document.querySelectorAll('input[name="' + name + '"]:checked'))
-        .map(el => el.value).sort();
-    }
-    function sameSet(a, b) {
-      return a.length === b.length && a.every((value, index) => value === b[index]);
-    }
-    function getAnswer(number) {
-      if (number === 2) {
-        return [
-          document.getElementById("q2a").value,
-          document.getElementById("q2b").value,
-          document.getElementById("q2c").value
-        ];
-      }
-      const radio = document.querySelector('input[name="q' + number + '"][type="radio"]');
-      if (radio) {
-        const chosen = document.querySelector('input[name="q' + number + '"]:checked');
-        return chosen ? [chosen.value] : [];
-      }
-      return selectedValues("q" + number);
-    }
-    function showFeedback(number, correct) {
-      const box = document.getElementById("fb" + number);
-      box.className = "feedback " + (correct ? "good" : "bad");
-      box.innerHTML = "<strong>" + (correct ? "Верно!" : "Пока неверно.") + "</strong>" +
-        explanations[number];
-    }
-
-    document.getElementById("checkBtn").addEventListener("click", function () {
-      let score = 0;
-      let unanswered = 0;
-      for (let i = 1; i <= 10; i++) {
-        const userAnswer = getAnswer(i);
-        if (userAnswer.every(value => value === "" ) || userAnswer.length === 0) unanswered++;
-        const correct = sameSet(userAnswer, answerKeys[i]);
-        if (correct) score++;
-        showFeedback(i, correct);
-      }
-      const result = document.getElementById("result");
-      document.getElementById("score").textContent = score + " из 10 баллов";
-      document.getElementById("summary").textContent =
-        unanswered ? "Без ответа: " + unanswered + ". Ниже приведены правильные ответы и пояснения." :
-        (score === 10 ? "Отличная работа! Все задания выполнены правильно." :
-         "Проверьте пояснения к заданиям и попробуйте пройти тренировку ещё раз.");
-      result.style.display = "block";
-      result.scrollIntoView({ behavior: "smooth", block: "start" });
-    });
-
-    document.getElementById("resetBtn").addEventListener("click", function () {
-      setTimeout(function () {
-        for (let i = 1; i <= 10; i++) {
-          const box = document.getElementById("fb" + i);
-          box.className = "feedback";
-          box.textContent = "";
-        }
-        document.getElementById("result").style.display = "none";
-      }, 0);
-    });
-  </script>
 </body>
 </html>
